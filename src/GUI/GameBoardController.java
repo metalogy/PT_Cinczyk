@@ -63,6 +63,7 @@ public class GameBoardController implements Initializable {
                 Circle circle = new Circle(boundsInScene.getCenterX(), boundsInScene.getCenterY(), 20.0f,
                         Color.RED);//player.getPawnsColor().getValue()); //#TODO nie działa kolor
                 circle.setStroke(Color.BLACK);
+
                 circle.setStrokeWidth(20.0f * 0.1);
                 circles.add(circle);
                 gamePane.getChildren().add(circle);
@@ -102,7 +103,7 @@ public class GameBoardController implements Initializable {
 //        });
 //
         setGameStatus(GameStatusEnum.IN_PROGRESS);
-//        while (true) { #TODO WHILE POWODUJE ZACIECIE
+//        while (true) { //#TODO WHILE POWODUJE ZACIECIE
             for (Player player : players
             ) {
 
@@ -115,7 +116,7 @@ public class GameBoardController implements Initializable {
                 });
 
             }
-//        }
+//       }
 //PEWNIE GŁOWNA PETLA
 
 

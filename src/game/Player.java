@@ -32,9 +32,33 @@ public class Player {
              ) {
             if(pawn.getId()==id)
             {
+                Integer oldPedometer=pawn.getPedometer();
                 pawn.setPedometer(pawn.getPedometer()+movement);
-                String newPosition="#"+pawn.getPedometer().toString(); //#TODO zmiana na domki
-                pawn.setPosition(newPosition);
+
+                if(pawn.getPedometer()<40){
+                    String newPosition="#"+pawn.getPedometer().toString(); //#TODO zmiana na domki
+                    pawn.setPosition(newPosition);
+                }
+                else if(pawn.getPedometer()==40){
+                    String newPosition="#endRed_1";
+                    pawn.setPosition(newPosition);
+                }
+                else if(pawn.getPedometer()==41){
+                    String newPosition="#endRed_2";
+                    pawn.setPosition(newPosition);
+                }
+                else if(pawn.getPedometer()==42){
+                    String newPosition="#endRed_3";
+                    pawn.setPosition(newPosition);
+                }
+                else if(pawn.getPedometer()==43){
+                    String newPosition="#endRed_4";
+                    pawn.setPosition(newPosition);
+                }
+                else{
+                    System.out.println("Too much!");
+                    pawn.setPedometer(oldPedometer);
+                }
             }
 
         }
