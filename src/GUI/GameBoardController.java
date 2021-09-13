@@ -1,6 +1,8 @@
 package GUI;
 
-import game.Game;
+//import game.Game;
+import game.GameStatusEnum;
+import game.Player;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,6 +20,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class GameBoardController implements Initializable {
@@ -31,6 +34,15 @@ public class GameBoardController implements Initializable {
 
     private Scene gameScene;
 
+    private String gameID;
+    private ArrayList<Player> players = new ArrayList<Player>();
+    private GameStatusEnum gameStatus;
+    private Player winner;
+
+    public GameBoardController(String gameID, ArrayList<Player> players) {
+        this.gameID = gameID;
+        this.players = players;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -43,7 +55,7 @@ public class GameBoardController implements Initializable {
 
     @FXML
     private void rollDice(){
-        Integer rolled= Game.rollDice();
+        Integer rolled= (int) ((Math.random() * (6)) + 1);
         this.rollResult.setText("Rolled: "+rolled);
 //        System.out.println(this.rollResult.getText());
 
@@ -56,6 +68,7 @@ public class GameBoardController implements Initializable {
         System.out.println(boundsInScene.getCenterX() + boundsInScene.getCenterY());
         Circle circle = new Circle(boundsInScene.getCenterX(),boundsInScene.getCenterY(),20.0f, Color.ORANGE);
         gamePane.getChildren().add(circle);
+        System.out.println(players.get(0).getLogin());
 
     }
 

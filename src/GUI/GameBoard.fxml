@@ -7,7 +7,7 @@
 
 <?import javafx.scene.text.Text?>
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="806.0" prefWidth="600.0"
-      fx:id ="gamePane" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.GameBoardController">
+      fx:id ="gamePane" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"><!-- fx:controller="GUI.GameBoardController"> -->
    <children>
       <Rectangle fx:id="30" arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="40.0" layoutX="240.0" layoutY="555.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
       <Rectangle fx:id="32" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="240.0" layoutY="475.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />

@@ -1,5 +1,7 @@
 package GUI;
 
+import game.PawnsColorEnum;
+import game.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,12 +10,14 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class LoginScreenController {
     @FXML
@@ -23,22 +27,23 @@ public class LoginScreenController {
 
     @FXML
     private void toGame(ActionEvent event) throws IOException {
-        Parent gameParent = FXMLLoader.load(getClass().getResource("GameBoard.fxml"));
+        Player player=new Player(PawnsColorEnum.R,"test");
+        ArrayList<Player> playerArrayList=new ArrayList<Player>();
+        playerArrayList.add(player);
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("GameBoard.fxml"));
+        GameBoardController controller=new GameBoardController("test",playerArrayList);
+        loader.setController(controller);
+        Parent gameParent = loader.load();
+
+        //Parent gameParent = FXMLLoader.load(getClass().getResource("GameBoard.fxml"));
+        //Parent gameParent = loader.load();
         Scene gameScene = new Scene(gameParent);
-
-
-
-        Rectangle rec =(Rectangle) gameScene.lookup("#homeRed_1");
-        rec.setFill(Color.BLACK);
-        System.out.println(rec.getX() + rec.getY());
-
-        Bounds boundsInScene = rec.localToScene(rec.getBoundsInLocal());
-        System.out.println(boundsInScene.getCenterX() + boundsInScene.getCenterY());
-        Circle circle = new Circle(boundsInScene.getCenterX(),boundsInScene.getCenterY(),100.0f,Color.ORANGE);
-        //pane.getChildren().add(circle);
         Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         appStage.setScene(gameScene);
         appStage.show();
+
+
 
     }
 
