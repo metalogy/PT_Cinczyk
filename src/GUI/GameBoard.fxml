@@ -6,7 +6,8 @@
 <?import javafx.scene.shape.Rectangle?>
 
 <?import javafx.scene.text.Text?>
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="806.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.GameBoardController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="806.0" prefWidth="600.0"
+      fx:id ="gamePane" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.GameBoardController">
    <children>
       <Rectangle fx:id="30" arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="40.0" layoutX="240.0" layoutY="555.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
       <Rectangle fx:id="32" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="240.0" layoutY="475.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
@@ -65,7 +66,7 @@
       <Rectangle fx:id="endRed_4" arcHeight="5.0" arcWidth="5.0" fill="RED" height="40.0" layoutX="240.0" layoutY="355.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
       <Rectangle fx:id="endGreen_4" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="40.0" layoutX="320.0" layoutY="355.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="40.0" layoutX="280.0" layoutY="355.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
-      <Pane layoutX="80.0" layoutY="155.0" prefHeight="80.0" prefWidth="80.0">
+      <Pane fx:id="homePaneRed" layoutX="80.0" layoutY="155.0" prefHeight="80.0" prefWidth="80.0">
          <children>
             <Rectangle fx:id="homeRed_1" arcHeight="5.0" arcWidth="5.0" fill="RED" height="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
             <Rectangle fx:id="homeRed_4" arcHeight="5.0" arcWidth="5.0" fill="RED" height="40.0" layoutX="40.0" layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
@@ -73,7 +74,7 @@
             <Rectangle fx:id="homeRed_2" arcHeight="5.0" arcWidth="5.0" fill="RED" height="40.0" layoutX="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
          </children>
       </Pane>
-      <Pane layoutX="440.0" layoutY="155.0" prefHeight="80.0" prefWidth="80.0">
+      <Pane fx:id="homePaneBlue" layoutX="440.0" layoutY="155.0" prefHeight="80.0" prefWidth="80.0">
          <children>
             <Rectangle fx:id="homeBlue_1" arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
             <Rectangle fx:id="homeBlue_4" arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="40.0" layoutX="40.0" layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
@@ -81,7 +82,7 @@
             <Rectangle fx:id="homeBlue_2" arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="40.0" layoutX="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
          </children>
       </Pane>
-      <Pane layoutX="80.0" layoutY="515.0" prefHeight="80.0" prefWidth="80.0">
+      <Pane fx:id="homePaneYellow" layoutX="80.0" layoutY="515.0" prefHeight="80.0" prefWidth="80.0">
          <children>
             <Rectangle fx:id="homeYellow_1" arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
             <Rectangle fx:id="homeYellow_4" arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="40.0" layoutX="40.0" layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
@@ -89,7 +90,7 @@
             <Rectangle fx:id="homeYellow_2" arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="40.0" layoutX="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
          </children>
       </Pane>
-      <Pane layoutX="448.0" layoutY="515.0" prefHeight="80.0" prefWidth="80.0">
+      <Pane fx:id="homePaneGreen"  layoutX="448.0" layoutY="515.0" prefHeight="80.0" prefWidth="80.0">
          <children>
             <Rectangle fx:id="homeGreen_1" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
             <Rectangle fx:id="homeGreen_4" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="40.0" layoutX="40.0" layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
