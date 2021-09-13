@@ -99,6 +99,7 @@
          </children>
       </Pane>
       <Button fx:id="rollDiceButton" layoutX="498.0" layoutY="655.0" mnemonicParsing="false" onAction="#rollDice" />
+      <Button fx:id="playButton" layoutX="40" layoutY="655.0" mnemonicParsing="false" onAction="#play" text="Play" />
       <Text fx:id="rollResult" layoutX="498.0" layoutY="800.0" text="Label" />
    </children>
 </Pane>

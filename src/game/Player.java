@@ -3,6 +3,10 @@ package game;
 import java.util.ArrayList;
 
 public class Player {
+    public Pawn[] getPawns() {
+        return pawns;
+    }
+
     private Pawn[] pawns =new Pawn[4];
     private PawnsColorEnum pawnsColor;
     private String login;
@@ -21,14 +25,16 @@ public class Player {
         }
     }
 
-    public void movePawn(String id, Integer movement)
+    public void movePawn(int id, Integer movement)
     {
         //#TODO warunki wejscia i wyjscia pionu z bazy, sprawdzenie czy wchodzi juz do bazy
         for (Pawn pawn:pawns
              ) {
-            if(pawn.getId().equals(id))
+            if(pawn.getId()==id)
             {
-                pawn.setPosition();
+                pawn.setPedometer(pawn.getPedometer()+movement);
+                String newPosition="#"+pawn.getPedometer().toString(); //#TODO zmiana na domki
+                pawn.setPosition(newPosition);
             }
 
         }
