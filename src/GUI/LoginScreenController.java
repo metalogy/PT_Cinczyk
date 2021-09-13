@@ -27,7 +27,7 @@ public class LoginScreenController {
 
     @FXML
     private void toGame(ActionEvent event) throws IOException {
-        Player player=new Player(PawnsColorEnum.R,"test");
+        Player player=new Player(PawnsColorEnum.Red,"test");
         ArrayList<Player> playerArrayList=new ArrayList<Player>();
         playerArrayList.add(player);
 

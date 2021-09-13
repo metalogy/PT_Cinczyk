@@ -1,7 +1,7 @@
 package game;
 
 public enum PawnsColorEnum {
-    R(1),G(2),B(3),Y(4);
+    Red(1),Green(2),Blue(3),Yellow(4);
 
     PawnsColorEnum(Integer value) {
         this.value = value;

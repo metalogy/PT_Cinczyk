@@ -61,7 +61,8 @@ public class GameBoardController implements Initializable {
 
 
 
-        Rectangle rec = (Rectangle) gamePane.getScene().lookup("#homeRed_1");
+        //Rectangle rec = (Rectangle) gamePane.getScene().lookup("#homeRed_1");
+        Rectangle rec = (Rectangle) gamePane.getScene().lookup("0");
         System.out.println(rec.getX() + rec.getY());
 
         Bounds boundsInScene = rec.localToScene(rec.getBoundsInLocal());
@@ -69,6 +70,10 @@ public class GameBoardController implements Initializable {
         Circle circle = new Circle(boundsInScene.getCenterX(),boundsInScene.getCenterY(),20.0f, Color.ORANGE);
         gamePane.getChildren().add(circle);
         System.out.println(players.get(0).getLogin());
+
+    }
+    private void move(Player player, int pawnID, Integer rolled)
+    {
 
     }
 

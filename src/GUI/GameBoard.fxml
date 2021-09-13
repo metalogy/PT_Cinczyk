@@ -68,34 +68,34 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="40.0" layoutX="280.0" layoutY="355.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
       <Pane fx:id="homePaneRed" layoutX="80.0" layoutY="155.0" prefHeight="80.0" prefWidth="80.0">
          <children>
-            <Rectangle fx:id="homeRed_1" arcHeight="5.0" arcWidth="5.0" fill="RED" height="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
-            <Rectangle fx:id="homeRed_4" arcHeight="5.0" arcWidth="5.0" fill="RED" height="40.0" layoutX="40.0" layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
-            <Rectangle fx:id="homeRed_3" arcHeight="5.0" arcWidth="5.0" fill="RED" height="40.0" layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
-            <Rectangle fx:id="homeRed_2" arcHeight="5.0" arcWidth="5.0" fill="RED" height="40.0" layoutX="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+            <Rectangle fx:id="homeRed_0" arcHeight="5.0" arcWidth="5.0" fill="RED" height="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+            <Rectangle fx:id="homeRed_3" arcHeight="5.0" arcWidth="5.0" fill="RED" height="40.0" layoutX="40.0" layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+            <Rectangle fx:id="homeRed_2" arcHeight="5.0" arcWidth="5.0" fill="RED" height="40.0" layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+            <Rectangle fx:id="homeRed_1" arcHeight="5.0" arcWidth="5.0" fill="RED" height="40.0" layoutX="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
          </children>
       </Pane>
       <Pane fx:id="homePaneBlue" layoutX="440.0" layoutY="155.0" prefHeight="80.0" prefWidth="80.0">
          <children>
-            <Rectangle fx:id="homeBlue_1" arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
-            <Rectangle fx:id="homeBlue_4" arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="40.0" layoutX="40.0" layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
-            <Rectangle fx:id="homeBlue_3" arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="40.0" layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
-            <Rectangle fx:id="homeBlue_2" arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="40.0" layoutX="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+            <Rectangle fx:id="homeBlue_0" arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+            <Rectangle fx:id="homeBlue_3" arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="40.0" layoutX="40.0" layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+            <Rectangle fx:id="homeBlue_2" arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="40.0" layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+            <Rectangle fx:id="homeBlue_1" arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="40.0" layoutX="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
          </children>
       </Pane>
       <Pane fx:id="homePaneYellow" layoutX="80.0" layoutY="515.0" prefHeight="80.0" prefWidth="80.0">
          <children>
-            <Rectangle fx:id="homeYellow_1" arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
-            <Rectangle fx:id="homeYellow_4" arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="40.0" layoutX="40.0" layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
-            <Rectangle fx:id="homeYellow_3" arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="40.0" layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
-            <Rectangle fx:id="homeYellow_2" arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="40.0" layoutX="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+            <Rectangle fx:id="homeYellow_0" arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+            <Rectangle fx:id="homeYellow_3" arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="40.0" layoutX="40.0" layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+            <Rectangle fx:id="homeYellow_2" arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="40.0" layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+            <Rectangle fx:id="homeYellow_1" arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="40.0" layoutX="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
          </children>
       </Pane>
       <Pane fx:id="homePaneGreen"  layoutX="448.0" layoutY="515.0" prefHeight="80.0" prefWidth="80.0">
          <children>
-            <Rectangle fx:id="homeGreen_1" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
-            <Rectangle fx:id="homeGreen_4" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="40.0" layoutX="40.0" layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
-            <Rectangle fx:id="homeGreen_3" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="40.0" layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
-            <Rectangle fx:id="homeGreen_2" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="40.0" layoutX="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+            <Rectangle fx:id="homeGreen_0" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+            <Rectangle fx:id="homeGreen_3" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="40.0" layoutX="40.0" layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+            <Rectangle fx:id="homeGreen_2" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="40.0" layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+            <Rectangle fx:id="homeGreen_1" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="40.0" layoutX="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
          </children>
       </Pane>
       <Button fx:id="rollDiceButton" layoutX="498.0" layoutY="655.0" mnemonicParsing="false" onAction="#rollDice" />
