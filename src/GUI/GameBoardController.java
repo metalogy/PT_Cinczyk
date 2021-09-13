@@ -30,11 +30,19 @@ public class GameBoardController implements Initializable {
     @FXML
     private Pane gamePane;
 
+    public GameStatusEnum getGameStatus() {
+        return gameStatus;
+    }
+
+    public void setGameStatus(GameStatusEnum gameStatus) {
+        this.gameStatus = gameStatus;
+    }
+
+    private GameStatusEnum gameStatus;
     private Scene gameScene;
 
     private String gameID;
     private ArrayList<Player> players = new ArrayList<Player>();
-    private GameStatusEnum gameStatus;
     private Player winner;
 
     private ArrayList<Circle> circles = new ArrayList<Circle>(); //przechowuje wizualizację pionków, ogranąć kolejność? jakie do niebieskiego, jakie do zieloneog
@@ -52,9 +60,10 @@ public class GameBoardController implements Initializable {
                 String startingPosition = "#home" + player.getPawnsColor() + "_" + i;
                 Rectangle rec = (Rectangle) gamePane.getScene().lookup(startingPosition);
                 Bounds boundsInScene = rec.localToScene(rec.getBoundsInLocal());
-                Circle circle = new Circle(boundsInScene.getCenterX(), boundsInScene.getCenterY(), 20.0f, player.getPawnsColor().getValue()); //#TODO nie działa kolor
+                Circle circle = new Circle(boundsInScene.getCenterX(), boundsInScene.getCenterY(), 20.0f,
+                        Color.RED);//player.getPawnsColor().getValue()); //#TODO nie działa kolor
                 circle.setStroke(Color.BLACK);
-                circle.setStrokeWidth(20.0f * 0.03);
+                circle.setStrokeWidth(20.0f * 0.1);
                 circles.add(circle);
                 gamePane.getChildren().add(circle);
 
@@ -77,23 +86,51 @@ public class GameBoardController implements Initializable {
     @FXML
     void play() {
         initializePawns();
-        //PEWNIE GŁOWNA PETLA
 
         //TESTOWO DO MOVE
         Rectangle newPawnRec = (Rectangle) gamePane.getScene().lookup("#0"); //#TODO enum z pozycjami startowymi pionków
+
         Bounds boundsInScene = newPawnRec.localToScene(newPawnRec.getBoundsInLocal());
-        circles.get(0).relocate(boundsInScene.getCenterX(), boundsInScene.getCenterY());
+        //circles.get(0).relocate(boundsInScene.getCenterX(), boundsInScene.getCenterY());
+        circles.get(0).relocate(newPawnRec.getLayoutX(), newPawnRec.getLayoutY());
+        System.out.println(boundsInScene.getCenterX() + " " + boundsInScene.getCenterY());
+//        rollDiceButton.setOnAction(actionEvent -> {
+//            int rolled=rollDice();
+//            move(players.get(0),0,rolled);
+//
+//
+//        });
+//
+        setGameStatus(GameStatusEnum.IN_PROGRESS);
+//        while (true) { #TODO WHILE POWODUJE ZACIECIE
+            for (Player player : players
+            ) {
+
+                //#TODO wybór pionka
+                rollDiceButton.setOnAction(actionEvent -> {
+                    int rolled=rollDice();
+                    move(player,0,rolled);
+
+
+                });
+
+            }
+//        }
+//PEWNIE GŁOWNA PETLA
+
+
 
 
     }
 
     @FXML
-    private void rollDice() {
+    private Integer rollDice() {
         Integer rolled = (int) ((Math.random() * (6)) + 1);
         this.rollResult.setText("Rolled: " + rolled);
+        return rolled;
 
-        Player player = players.get(0);
-        move(player, 0, rolled);
+//        Player player = players.get(0);
+//        move(player, 0, rolled);
 
 
 //        //Rectangle rec = (Rectangle) gamePane.getScene().lookup("#homeRed_1");
@@ -118,9 +155,9 @@ public class GameBoardController implements Initializable {
 
         int playerIndex = players.indexOf(player);
         if (playerIndex == 1) {
-            circles.get(playerIndex * 4 + pawnID).relocate(boundsInScene.getCenterX(), boundsInScene.getCenterY());
+            circles.get(playerIndex * 4 + pawnID).relocate(newPawnRec.getLayoutX(), newPawnRec.getLayoutY());
         } else {
-            circles.get(pawnID).relocate(boundsInScene.getCenterX(), boundsInScene.getCenterY());
+            circles.get(pawnID).relocate(newPawnRec.getLayoutX(), newPawnRec.getLayoutY());
         }
     }
     //#TODO przechowywanie okręgów i aktualizacja ich pozycji
