@@ -42,7 +42,7 @@ public class GameBoardController implements Initializable {
     private Scene gameScene;
 
     private String gameID;
-    private ArrayList<Player> players = new ArrayList<Player>();
+    private static ArrayList<Player> players = new ArrayList<Player>();
     private Player winner;
 
     private ArrayList<Circle> circles = new ArrayList<Circle>(); //przechowuje wizualizację pionków, ogranąć kolejność? jakie do niebieskiego, jakie do zieloneog
@@ -51,6 +51,10 @@ public class GameBoardController implements Initializable {
         this.gameID = gameID;
         this.players = players;
 
+    }
+
+    public static ArrayList<Player> getPlayers(){
+        return players;
     }
 
     private void initializePawns() {

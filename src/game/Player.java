@@ -7,13 +7,11 @@ public class Player {
         return pawns;
     }
 
-    private Pawn[] pawns =new Pawn[4];
+    private Pawn[] pawns = new Pawn[4];
     private PawnsColorEnum pawnsColor;
     private String login;
 
     public Player(PawnsColorEnum pawnsColor, String login) {
-
-
         this.pawnsColor = pawnsColor;
         this.login = login;
         for(int i=0;i<4;i++)
