@@ -65,6 +65,9 @@ public class GameBoardController implements Initializable {
                 circle.setStroke(Color.BLACK);
 
                 circle.setStrokeWidth(20.0f * 0.1);
+                //przypisanie id do pionka
+                String pawnID=player.getPawnsColor().toString()+i;
+                circle.setId(pawnID);
                 circles.add(circle);
                 gamePane.getChildren().add(circle);
 
@@ -103,20 +106,36 @@ public class GameBoardController implements Initializable {
 //        });
 //
         setGameStatus(GameStatusEnum.IN_PROGRESS);
-//        while (true) { //#TODO WHILE POWODUJE ZACIECIE
+ //       while (true) { //#TODO WHILE POWODUJE ZACIECIE
             for (Player player : players
             ) {
 
                 //#TODO wybór pionka
                 rollDiceButton.setOnAction(actionEvent -> {
                     int rolled=rollDice();
-                    move(player,0,rolled);
+
+
+
+                    gamePane.setOnMouseClicked(event -> {
+                        if (event.getTarget() instanceof Circle) {
+                            String clickedPawnID=(((Circle) event.getTarget()).getId());
+
+                            //#TODO sprawdzić czy nasz pionek
+                            String clickedPawnColour=clickedPawnID.substring(0, clickedPawnID.length() - 1);
+                            int pawnID= Integer.parseInt(clickedPawnID.substring(clickedPawnID.length()-1));
+                            System.out.println(player.getPawnsColor().toString().equals(clickedPawnColour));
+                            move(player,pawnID,rolled);
+                            System.out.println("git");
+                        } else {
+                           System.out.println("DUPA");
+                        }
+                    });
 
 
                 });
 
             }
-//       }
+    //   }
 //PEWNIE GŁOWNA PETLA
 
 

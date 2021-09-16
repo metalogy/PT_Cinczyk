@@ -7,7 +7,7 @@ public class Player {
         return pawns;
     }
 
-    private Pawn[] pawns =new Pawn[4];
+    private Pawn[] pawns = new Pawn[4];
     private PawnsColorEnum pawnsColor;
     private String login;
 
@@ -16,46 +16,38 @@ public class Player {
 
         this.pawnsColor = pawnsColor;
         this.login = login;
-        for(int i=0;i<4;i++)
-        {
-            String startingPosition="home"+pawnsColor+"_"+i;
+        for (int i = 0; i < 4; i++) {
+            String startingPosition = "home" + pawnsColor + "_" + i;
             System.out.println(startingPosition);
-            Pawn pawn=new Pawn(i,pawnsColor,startingPosition);
-            pawns[i]=pawn;
+            Pawn pawn = new Pawn(i, pawnsColor, startingPosition);
+            pawns[i] = pawn;
         }
     }
 
-    public void movePawn(int id, Integer movement)
-    {
+    public void movePawn(int id, Integer movement) {
         //#TODO warunki wejscia i wyjscia pionu z bazy, sprawdzenie czy wchodzi juz do bazy
-        for (Pawn pawn:pawns
-             ) {
-            if(pawn.getId()==id)
-            {
-                Integer oldPedometer=pawn.getPedometer();
-                pawn.setPedometer(pawn.getPedometer()+movement);
+        for (Pawn pawn : pawns
+        ) {
+            if (pawn.getId() == id) {
+                Integer oldPedometer = pawn.getPedometer();
+                pawn.setPedometer(pawn.getPedometer() + movement);
 
-                if(pawn.getPedometer()<40){
-                    String newPosition="#"+pawn.getPedometer().toString(); //#TODO zmiana na domki
+                if (pawn.getPedometer() < 40) {
+                    String newPosition = "#" + pawn.getPedometer().toString(); //#TODO zmiana na domki
                     pawn.setPosition(newPosition);
-                }
-                else if(pawn.getPedometer()==40){
-                    String newPosition="#endRed_1";
+                } else if (pawn.getPedometer() == 40) {
+                    String newPosition = "#endRed_1";
                     pawn.setPosition(newPosition);
-                }
-                else if(pawn.getPedometer()==41){
-                    String newPosition="#endRed_2";
+                } else if (pawn.getPedometer() == 41) {
+                    String newPosition = "#endRed_2";
                     pawn.setPosition(newPosition);
-                }
-                else if(pawn.getPedometer()==42){
-                    String newPosition="#endRed_3";
+                } else if (pawn.getPedometer() == 42) {
+                    String newPosition = "#endRed_3";
                     pawn.setPosition(newPosition);
-                }
-                else if(pawn.getPedometer()==43){
-                    String newPosition="#endRed_4";
+                } else if (pawn.getPedometer() == 43) {
+                    String newPosition = "#endRed_4";
                     pawn.setPosition(newPosition);
-                }
-                else{
+                } else {
                     System.out.println("Too much!");
                     pawn.setPedometer(oldPedometer);
                 }

@@ -3,7 +3,7 @@ package game;
 import javafx.scene.shape.Circle;
 
 public class Pawn {
-    private Circle[] circles =new Circle[4];
+    //private Circle[] circles =new Circle[4];
     private Integer id;
 
     public Integer getPedometer() {

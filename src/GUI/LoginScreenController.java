@@ -28,8 +28,10 @@ public class LoginScreenController {
     @FXML
     private void toGame(ActionEvent event) throws IOException {
         Player player=new Player(PawnsColorEnum.Red,"test");
+        Player player2=new Player(PawnsColorEnum.Blue,"test2");
         ArrayList<Player> playerArrayList=new ArrayList<Player>();
         playerArrayList.add(player);
+        playerArrayList.add(player2);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("GameBoard.fxml"));
         GameBoardController controller=new GameBoardController("test",playerArrayList);
