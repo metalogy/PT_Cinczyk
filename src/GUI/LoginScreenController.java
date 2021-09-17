@@ -27,13 +27,15 @@ public class LoginScreenController {
 
     @FXML
     private void toGame(ActionEvent event) throws IOException {
-        Player player=new Player(PawnsColorEnum.Red,"test");
-        ArrayList<Player> playerArrayList=new ArrayList<Player>();
-        playerArrayList.add(player);
+//        Player player=new Player(PawnsColorEnum.Red,"test");
+//        ArrayList<Player> playerArrayList=new ArrayList<Player>();
+//        playerArrayList.add(player);
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("GameBoard.fxml"));
-        GameBoardController controller=new GameBoardController("test",playerArrayList);
-        loader.setController(controller);
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("GameBoard.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("PlayerScreen.fxml"));
+//        GameBoardController controller=new GameBoardController("test",playerArrayList);
+        PlayerScreen controller=new PlayerScreen();
+//        loader.setController(controller);
         Parent gameParent = loader.load();
 
         //Parent gameParent = FXMLLoader.load(getClass().getResource("GameBoard.fxml"));
