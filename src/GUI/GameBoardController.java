@@ -34,6 +34,8 @@ public class GameBoardController implements Initializable {
 
     private Scene gameScene;
 
+    private int rollValidation = 1;
+
     private String gameID;
     private Game game;
     private ArrayList<Circle> circles = new ArrayList<Circle>(); //przechowuje wizualizację pionków, ogranąć kolejność? jakie do niebieskiego, jakie do zieloneog
@@ -83,26 +85,32 @@ public class GameBoardController implements Initializable {
         game.setGameStatus(GameStatusEnum.IN_PROGRESS);
 
         rollDiceButton.setOnAction(actionEvent -> {
-            int rolled = rollDice();
-            //TODO zablokowanie wielokrotnego wciśnięcia rolowania
-            gamePane.setOnMouseClicked(event -> {
-                if (event.getTarget() instanceof Circle) {
-                    String clickedPawnID = (((Circle) event.getTarget()).getId());
+            if(this.rollValidation == 1){
+                this.rollValidation = 0;
+                int rolled = rollDice();
+                //TODO zablokowanie wielokrotnego wciśnięcia rolowania
+                gamePane.setOnMouseClicked(event -> {
+                    if (event.getTarget() instanceof Circle) {
+                        String clickedPawnID = (((Circle) event.getTarget()).getId());
 
-                    String clickedPawnColour = clickedPawnID.substring(0, clickedPawnID.length() - 1);
-                    int pawnID = Integer.parseInt(clickedPawnID.substring(clickedPawnID.length() - 1));
+                        String clickedPawnColour = clickedPawnID.substring(0, clickedPawnID.length() - 1);
+                        int pawnID = Integer.parseInt(clickedPawnID.substring(clickedPawnID.length() - 1));
 
-                    if (game.getCurrentPlayer().getPawnsColor().equals(clickedPawnColour)) {
-                        move(game.getCurrentPlayer(), pawnID, rolled);
-                        game.nextPlayer(); //#TODO wciskanie bez rollowania
+                        if (game.getCurrentPlayer().getPawnsColor().equals(clickedPawnColour)) {
+                            move(game.getCurrentPlayer(), pawnID, rolled);
+                            this.rollValidation = 1;
+                            game.nextPlayer(); //#TODO wciskanie bez rollowania
 
 
-                    } else {
-                        System.out.println("Zły pionek!"); //#TODO jakiś komunikat w GUI
+                        } else {
+                            System.out.println("Zły pionek!"); //#TODO jakiś komunikat w GUI
+                        }
                     }
-                }
-            });
+                });
+            }
+
         });
+
     }
 
     @FXML
