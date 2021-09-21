@@ -61,8 +61,8 @@ public class Player {
         return login;
     }
 
-    public PawnsColorEnum getPawnsColor() {
-        return pawnsColor;
+    public String getPawnsColor() {
+        return pawnsColor.getValue();
     }
 
 

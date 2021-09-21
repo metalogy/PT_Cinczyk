@@ -3,17 +3,24 @@ package game;
 import javafx.scene.paint.Color;
 
 public enum PawnsColorEnum {
-    Red(Color.RED),Green(Color.GREEN),Blue(Color.BLUE),Yellow(Color.YELLOW);
+    Red("Red"),Green("Green"),Blue("Blue"),Yellow("Yellow");
 
-    PawnsColorEnum(Color color) {
+    PawnsColorEnum(String value) {
         this.value = value;
     }
 
-    public Color getValue() {
+    public String getValue() {
         return value;
     }
 
-    private Color value;
+//    @Override
+//    public String toString() {
+//        return "PawnsColorEnum{" +
+//                "value='" + value + '\'' +
+//                '}';
+//    }
+
+    private String value;
 
 
 }
