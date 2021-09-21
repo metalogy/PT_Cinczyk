@@ -26,6 +26,8 @@ public class Game {
     public Game(String gameID, ArrayList<Player> players) {
         this.gameID = gameID;
         this.players = players;
+        this.currentPlayerID=0;
+        this.currentPlayer=getCurrentPlayer();
     }
 
     public static Integer rollDice() {

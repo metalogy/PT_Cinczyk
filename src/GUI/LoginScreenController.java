@@ -38,8 +38,6 @@ public class LoginScreenController {
         loader.setController(controller);
         Parent gameParent = loader.load();
 
-        //Parent gameParent = FXMLLoader.load(getClass().getResource("GameBoard.fxml"));
-        //Parent gameParent = loader.load();
         Scene gameScene = new Scene(gameParent);
         Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         appStage.setScene(gameScene);

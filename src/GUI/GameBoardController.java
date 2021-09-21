@@ -4,6 +4,7 @@ package GUI;
 
 import game.Game;
 import game.GameStatusEnum;
+import game.PawnStatusEnum;
 import game.Player;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -75,10 +76,10 @@ public class GameBoardController implements Initializable {
     void play() {
         initializePawns();
 
-        Rectangle newPawnRec = (Rectangle) gamePane.getScene().lookup("#0"); //#TODO enum z pozycjami startowymi pionków
-        Bounds boundsInScene = newPawnRec.localToScene(newPawnRec.getBoundsInLocal());
-        circles.get(0).relocate(newPawnRec.getLayoutX(), newPawnRec.getLayoutY());
-        System.out.println(boundsInScene.getCenterX() + " " + boundsInScene.getCenterY());
+//        Rectangle newPawnRec = (Rectangle) gamePane.getScene().lookup("#0"); //#TODO enum z pozycjami startowymi pionków
+//        Bounds boundsInScene = newPawnRec.localToScene(newPawnRec.getBoundsInLocal());
+//        circles.get(0).relocate(newPawnRec.getLayoutX(), newPawnRec.getLayoutY());
+//        System.out.println(boundsInScene.getCenterX() + " " + boundsInScene.getCenterY());
 
         game.setGameStatus(GameStatusEnum.IN_PROGRESS);
 
@@ -113,17 +114,21 @@ public class GameBoardController implements Initializable {
     }
 
     private void move(Player player, int pawnID, Integer rolled) {
-        //#TODO wyjście z bazy + domki
-        player.movePawn(pawnID, rolled);
 
-        Rectangle newPawnRec = (Rectangle) gamePane.getScene().lookup(player.getPawns()[pawnID].getPosition());
-        Bounds boundsInScene = newPawnRec.localToScene(newPawnRec.getBoundsInLocal());
+        //TODO dopracować wejścia do domków i ruch
+        boolean movable = player.movePawn(pawnID, rolled);
 
-        int playerIndex = game.getPlayers().indexOf(player);
-        if (playerIndex == 1) {
-            circles.get(playerIndex * 4 + pawnID).relocate(newPawnRec.getLayoutX(), newPawnRec.getLayoutY());
-        } else {
-            circles.get(pawnID).relocate(newPawnRec.getLayoutX(), newPawnRec.getLayoutY());
+        if (movable) {
+            Rectangle newPawnRec = (Rectangle) gamePane.getScene().lookup(player.getPawns()[pawnID].getPosition());
+            System.out.println(player.getPawns()[pawnID].getPosition());
+            Bounds boundsInScene = newPawnRec.localToScene(newPawnRec.getBoundsInLocal());
+
+            int playerIndex = game.getPlayers().indexOf(player);
+            if (playerIndex == 1) {
+                circles.get(playerIndex * 4 + pawnID).relocate(newPawnRec.getLayoutX(), newPawnRec.getLayoutY());
+            } else {
+                circles.get(pawnID).relocate(newPawnRec.getLayoutX(), newPawnRec.getLayoutY());
+            }
         }
     }
 
