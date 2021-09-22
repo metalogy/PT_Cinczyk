@@ -1,19 +1,14 @@
 package GUI;
 
-import game.PawnsColorEnum;
+import game.enums.PawnsColorEnum;
 import game.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Bounds;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -27,6 +22,7 @@ public class LoginScreenController {
 
     @FXML
     private void toGame(ActionEvent event) throws IOException {
+        //#TODO menu wyboru graczy
         Player player=new Player(PawnsColorEnum.Red,"test");
         Player player2=new Player(PawnsColorEnum.Blue,"test2");
         ArrayList<Player> playerArrayList=new ArrayList<Player>();

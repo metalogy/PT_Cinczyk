@@ -1,5 +1,7 @@
 package game;
 
+import game.enums.GameStatusEnum;
+
 import java.util.ArrayList;
 
 public class Game {

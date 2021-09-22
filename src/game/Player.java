@@ -1,6 +1,8 @@
 package game;
 
-import java.util.ArrayList;
+import game.enums.PawnStatusEnum;
+import game.enums.PawnsColorEnum;
+import game.enums.StartingPositionEnum;
 
 public class Player {
     public Pawn[] getPawns() {
@@ -10,7 +12,7 @@ public class Player {
     private Pawn[] pawns = new Pawn[4];
     private PawnsColorEnum pawnsColor;
     private String login;
-    private int startingPosition; //#TODO w jakiś sposób przechowywać pola startowe
+    private int startingBoardPosition;
 
     public Player(PawnsColorEnum pawnsColor, String login) {
 
@@ -22,18 +24,23 @@ public class Player {
             System.out.println(startingPosition);
             Pawn pawn = new Pawn(i, pawnsColor, startingPosition);
             pawns[i] = pawn;
+            switch (this.pawnsColor) {
+                case Red -> this.startingBoardPosition = StartingPositionEnum.RED.getValue();
+                case Blue -> this.startingBoardPosition = StartingPositionEnum.BLUE.getValue();
+                case Green -> this.startingBoardPosition = StartingPositionEnum.GREEN.getValue();
+                case Yellow -> this.startingBoardPosition = StartingPositionEnum.YELLOW.getValue();
+            }
         }
     }
 
     public boolean movePawn(Integer id, Integer rolled) {
-        //#TODO warunki wejscia i wyjscia pionu z bazy, sprawdzenie czy wchodzi juz do bazy
         for (Pawn pawn : pawns
         ) {
             if (pawn.getId() == id) {
                 if (pawn.getStatus() == PawnStatusEnum.ON_SPAWN_POINT) {
                     if (rolled == 6) {
-                        pawn.putPawnOnBoard(new String(String.valueOf(getStartingPosition())));
-                        String position = "#" + (new String(String.valueOf(getStartingPosition())));
+                        pawn.putPawnOnBoard(new String(String.valueOf(getStartingBoardPosition())));
+                        String position = "#" + (new String(String.valueOf(getStartingBoardPosition())));
                         System.out.println("POSITION " + position);
                         pawn.setPosition(position);
                         return true;
@@ -46,8 +53,8 @@ public class Player {
                     pawn.setPedometer(pawn.getPedometer() + rolled);
 
                     if (pawn.getPedometer() < 40) {
-                        if (startingPosition != 0) {
-                            String newPosition = "#" + pawn.getPedometer() % startingPosition; //#TODO zmiana na domki
+                        if (startingBoardPosition != 0) {
+                            String newPosition = "#" + (pawn.getPedometer() + startingBoardPosition) % GameConstants.BOARD_SIZE;
                             pawn.setPosition(newPosition);
                             return true;
                         } else {
@@ -70,14 +77,16 @@ public class Player {
                     } else if (pawn.getPedometer() == 43) {
                         String newPosition = "#end" + getPawnsColor() + "_4";
                         pawn.setPosition(newPosition);
+                        pawn.setStatus(PawnStatusEnum.LOCKED_IN_HOME);
                         return true;
                     } else {
                         System.out.println("Too much!");
-                        pawn.setPedometer(oldPedometer);
+                        //pawn.setPedometer(oldPedometer);
                         return false;
                     }
                 }
-                //#TODO blokowanie pionków
+                //#TODO blokowanie pionków na końcowych pozycjach w domku
+                //#TODO warunki zwycięstwa
                 else if (pawn.getStatus() == PawnStatusEnum.LOCKED_IN_HOME) {
                     System.out.println("Final pawn position, cant move");
                     return false;
@@ -88,10 +97,9 @@ public class Player {
         return false;
     }
 
-    public int getStartingPosition() {
-        return startingPosition;
+    public int getStartingBoardPosition() {
+        return startingBoardPosition;
     }
-
 
     public String getLogin() {
         return login;

@@ -3,8 +3,7 @@ package GUI;
 //import game.Game;
 
 import game.Game;
-import game.GameStatusEnum;
-import game.PawnStatusEnum;
+import game.enums.GameStatusEnum;
 import game.Player;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -37,7 +36,7 @@ public class GameBoardController implements Initializable {
 
     private String gameID;
     private Game game;
-    private ArrayList<Circle> circles = new ArrayList<Circle>(); //przechowuje wizualizację pionków, ogranąć kolejność? jakie do niebieskiego, jakie do zieloneog
+    private ArrayList<Circle> circles = new ArrayList<Circle>(); //przechowuje okręgi - wizualizację pionków
 
     public GameBoardController(String gameID, ArrayList<Player> players) {
         this.gameID = gameID;
@@ -56,7 +55,7 @@ public class GameBoardController implements Initializable {
                 circle.setStroke(Color.BLACK);
                 circle.setStrokeWidth(20.0f * 0.1);
 
-                //przypisanie id do pionka
+
                 String pawnID = player.getPawnsColor().toString() + i;
                 circle.setId(pawnID);
                 circles.add(circle);
@@ -75,12 +74,6 @@ public class GameBoardController implements Initializable {
     @FXML
     void play() {
         initializePawns();
-
-//        Rectangle newPawnRec = (Rectangle) gamePane.getScene().lookup("#0"); //#TODO enum z pozycjami startowymi pionków
-//        Bounds boundsInScene = newPawnRec.localToScene(newPawnRec.getBoundsInLocal());
-//        circles.get(0).relocate(newPawnRec.getLayoutX(), newPawnRec.getLayoutY());
-//        System.out.println(boundsInScene.getCenterX() + " " + boundsInScene.getCenterY());
-
         game.setGameStatus(GameStatusEnum.IN_PROGRESS);
 
         rollDiceButton.setOnAction(actionEvent -> {
@@ -96,7 +89,6 @@ public class GameBoardController implements Initializable {
                     if (game.getCurrentPlayer().getPawnsColor().equals(clickedPawnColour)) {
                         move(game.getCurrentPlayer(), pawnID, rolled);
                         game.nextPlayer(); //#TODO wciskanie bez rollowania
-
 
                     } else {
                         System.out.println("Zły pionek!"); //#TODO jakiś komunikat w GUI
@@ -115,7 +107,6 @@ public class GameBoardController implements Initializable {
 
     private void move(Player player, int pawnID, Integer rolled) {
 
-        //TODO dopracować wejścia do domków i ruch
         boolean movable = player.movePawn(pawnID, rolled);
 
         if (movable) {
@@ -124,7 +115,7 @@ public class GameBoardController implements Initializable {
             Bounds boundsInScene = newPawnRec.localToScene(newPawnRec.getBoundsInLocal());
 
             int playerIndex = game.getPlayers().indexOf(player);
-            if (playerIndex == 1) {
+            if (playerIndex > 0) {
                 circles.get(playerIndex * 4 + pawnID).relocate(newPawnRec.getLayoutX(), newPawnRec.getLayoutY());
             } else {
                 circles.get(pawnID).relocate(newPawnRec.getLayoutX(), newPawnRec.getLayoutY());

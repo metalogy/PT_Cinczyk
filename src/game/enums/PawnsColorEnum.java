@@ -1,9 +1,9 @@
-package game;
+package game.enums;
 
 import javafx.scene.paint.Color;
 
 public enum PawnsColorEnum {
-    Red("Red"),Green("Green"),Blue("Blue"),Yellow("Yellow");
+    Red("Red"), Green("Green"), Blue("Blue"), Yellow("Yellow");
 
     PawnsColorEnum(String value) {
         this.value = value;
