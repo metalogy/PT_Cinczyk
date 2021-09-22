@@ -15,8 +15,6 @@ public class Player {
     private int startingBoardPosition;
 
     public Player(PawnsColorEnum pawnsColor, String login) {
-
-
         this.pawnsColor = pawnsColor;
         this.login = login;
         for (int i = 0; i < 4; i++) {
