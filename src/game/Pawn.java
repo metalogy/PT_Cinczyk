@@ -9,22 +9,22 @@ public class Pawn {
     private String position;
     private PawnStatusEnum status;
     private PawnsColorEnum color;
+    private String originalHomePosition;
 
     Pawn(Integer id, PawnsColorEnum color, String startingPosition) {
         this.id = id;
         this.position = startingPosition;
+        this.originalHomePosition = startingPosition;
         this.status = PawnStatusEnum.ON_SPAWN_POINT;
         this.color = color;
         this.pedometer = 0;
     }
 
-    //#TODO zbicie piona
-//    public void takeAPawn(Deque<Pawn> base)
-//    {
-//        this.position=null;
-//        this.status=PawnStatus.ON_SPAWN_POINT;
-//        base.add(this);
-//    }
+    public void backToHome() {
+        this.position = this.originalHomePosition;
+        this.status = PawnStatusEnum.ON_SPAWN_POINT;
+    }
+
     public void putPawnOnBoard(String position) {
         this.position = position;
         this.status = PawnStatusEnum.ON_BOARD;

@@ -1,5 +1,6 @@
 package GUI;
 
+import game.Game;
 import game.enums.PawnsColorEnum;
 import game.Player;
 import javafx.event.ActionEvent;
@@ -30,7 +31,8 @@ public class LoginScreenController {
         playerArrayList.add(player2);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("GameBoard.fxml"));
-        GameBoardController controller=new GameBoardController("test",playerArrayList);
+        Game game = new Game("TestGame",playerArrayList);
+        GameBoardController controller=new GameBoardController(game);
         loader.setController(controller);
         Parent gameParent = loader.load();
 

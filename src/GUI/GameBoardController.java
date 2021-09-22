@@ -3,6 +3,7 @@ package GUI;
 //import game.Game;
 
 import game.Game;
+import game.GameController;
 import game.enums.GameStatusEnum;
 import game.Player;
 import javafx.fxml.FXML;
@@ -36,17 +37,16 @@ public class GameBoardController implements Initializable {
 
     private int rollValidation = 1;
 
-    private String gameID;
-    private Game game;
+    //private String gameID;
+    private GameController gameController;
     private ArrayList<Circle> circles = new ArrayList<Circle>(); //przechowuje okręgi - wizualizację pionków
 
-    public GameBoardController(String gameID, ArrayList<Player> players) {
-        this.gameID = gameID;
-        this.game = new Game(gameID, players);
+    public GameBoardController(Game game) {
+        this.gameController = new GameController(game);
     }
 
     private void initializePawns() {
-        for (Player player : game.getPlayers()
+        for (Player player : gameController.getPlayers()
         ) {
             for (int i = 0; i < 4; i++) {
                 String startingPosition = "#home" + player.getPawnsColor() + "_" + i;
@@ -77,10 +77,10 @@ public class GameBoardController implements Initializable {
     void play() {
         initializePawns();
 
-        game.setGameStatus(GameStatusEnum.IN_PROGRESS);
+        gameController.setGameStatus(GameStatusEnum.IN_PROGRESS);
 
         rollDiceButton.setOnAction(actionEvent -> {
-            if(this.rollValidation == 1){
+            if (this.rollValidation == 1) {
                 this.rollValidation = 0;
                 int rolled = rollDice();
                 //TODO zablokowanie wielokrotnego wciśnięcia rolowania
@@ -91,16 +91,17 @@ public class GameBoardController implements Initializable {
                         String clickedPawnColour = clickedPawnID.substring(0, clickedPawnID.length() - 1);
                         int pawnID = Integer.parseInt(clickedPawnID.substring(clickedPawnID.length() - 1));
 
-                        if (game.getCurrentPlayer().getPawnsColor().equals(clickedPawnColour)) {
-                            move(game.getCurrentPlayer(), pawnID, rolled);
+                        if (gameController.getCurrentPlayer().getPawnsColor().equals(clickedPawnColour)) {
+                            move(gameController.getCurrentPlayer(), pawnID, rolled);
                             this.rollValidation = 1;
-                            game.nextPlayer(); //#TODO wciskanie bez rollowania
+                            gameController.nextPlayer(); //#TODO wciskanie bez rollowania
 
-                    } else {
-                        System.out.println("Zły pionek!"); //#TODO jakiś komunikat w GUI
+                        } else {
+                            System.out.println("Zły pionek!"); //#TODO jakiś komunikat w GUI
+                        }
                     }
-                }
-            });}
+                });
+            }
         });
     }
 
@@ -113,14 +114,14 @@ public class GameBoardController implements Initializable {
 
     private void move(Player player, int pawnID, Integer rolled) {
 
-        boolean movable = player.movePawn(pawnID, rolled);
+        boolean movable = gameController.movePawn(player, pawnID, rolled);
 
         if (movable) {
             Rectangle newPawnRec = (Rectangle) gamePane.getScene().lookup(player.getPawns()[pawnID].getPosition());
             System.out.println(player.getPawns()[pawnID].getPosition());
             Bounds boundsInScene = newPawnRec.localToScene(newPawnRec.getBoundsInLocal());
 
-            int playerIndex = game.getPlayers().indexOf(player);
+            int playerIndex = gameController.getPlayers().indexOf(player);
             if (playerIndex > 0) {
                 circles.get(playerIndex * 4 + pawnID).relocate(newPawnRec.getLayoutX(), newPawnRec.getLayoutY());
             } else {

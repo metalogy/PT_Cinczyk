@@ -8,8 +8,8 @@ public class Game {
     private String gameID;
     private ArrayList<Player> players = new ArrayList<Player>();
     private GameStatusEnum gameStatus;
-    private Player currentPlayer;
-    private int currentPlayerID;
+//    private Player currentPlayer;
+//    private int currentPlayerID;
     private Player winner;
 
     public ArrayList<Player> getPlayers() {
@@ -28,8 +28,8 @@ public class Game {
     public Game(String gameID, ArrayList<Player> players) {
         this.gameID = gameID;
         this.players = players;
-        this.currentPlayerID=0;
-        this.currentPlayer=getCurrentPlayer();
+//        this.currentPlayerID=0;
+//        this.currentPlayer=getCurrentPlayer();
     }
 
     public static Integer rollDice() {
@@ -38,14 +38,18 @@ public class Game {
         return roll;
     }
 
-    public Player getCurrentPlayer() {
-        return this.players.get(this.currentPlayerID);
-    }
+//    public Player getCurrentPlayer() {
+//        return this.players.get(this.currentPlayerID);
+//    }
 
-    public void nextPlayer() {
-        this.currentPlayerID++;
-        if (this.currentPlayerID > this.players.size()-1) {
-            this.currentPlayerID = 0;
-        }
-    }
+//    public void nextPlayer() {
+//        this.currentPlayerID++;
+//        if (this.currentPlayerID > this.players.size()-1) {
+//            this.currentPlayerID = 0;
+//        }
+//    }
+//    public void bicie(Pawn pawn, String field)
+//    {
+//
+//    }
 }
