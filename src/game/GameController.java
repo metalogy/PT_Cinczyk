@@ -1,11 +1,12 @@
 package game;
 
-import GUI.GameBoardController;
 import game.enums.GameStatusEnum;
 import game.enums.MoveTypeEnum;
 import game.enums.PawnStatusEnum;
 
 import java.util.ArrayList;
+
+import static java.lang.Integer.parseInt;
 
 public class GameController {
 
@@ -88,12 +89,21 @@ public class GameController {
                                 System.out.println("Cant move, field already occupied bo your pawn");
                                 return false;
                         }
-                        //#TODO może flaga dotycząca finalnie zajętych domków?
-                    } else if (pawn.getPedometer() == 40) {
-                        String newPawnPosition = "#end" + player.getPawnsColor() + "_1";
+                    } else if (pawn.getPedometer() >= 40) {
+                        String newPawnPosition = "";
+                        switch (pawn.getPedometer()) {
+                            case 40 -> newPawnPosition = "#end" + player.getPawnsColor() + "_1";
+                            case 41 -> newPawnPosition = "#end" + player.getPawnsColor() + "_2";
+                            case 42 -> newPawnPosition = "#end" + player.getPawnsColor() + "_3";
+                            case 43 -> newPawnPosition = "#end" + player.getPawnsColor() + "_4";
+                        }
                         switch (checkField(player, pawn, newPawnPosition)) {
                             case NORMAL:
                                 pawn.setPosition(newPawnPosition);
+                                if(checkIfLocked(player,pawn))
+                                {
+                                    pawn.setStatus(PawnStatusEnum.LOCKED_IN_HOME); //
+                                }
                                 return true;
                             case FIELD_TAKEN:
                                 //pole zajęte przez nasz pionek
@@ -102,42 +112,6 @@ public class GameController {
                                 return false;
                         }
 
-                    } else if (pawn.getPedometer() == 41) {
-                        String newPawnPosition = "#end" + player.getPawnsColor() + "_2";
-                        switch (checkField(player, pawn, newPawnPosition)) {
-                            case NORMAL:
-                                pawn.setPosition(newPawnPosition);
-                                return true;
-                            case FIELD_TAKEN:
-                                //pole zajęte przez nasz pionek
-                                pawn.setPedometer(oldPedometer); //nie można ruszyć, przypisanie starego krokomierza
-                                System.out.println("Cant move, field already occupied bo your pawn");
-                                return false;
-                        }
-                    } else if (pawn.getPedometer() == 42) {
-                        String newPawnPosition = "#end" + player.getPawnsColor() + "_3";
-                        switch (checkField(player, pawn, newPawnPosition)) {
-                            case NORMAL:
-                                pawn.setPosition(newPawnPosition);
-                                return true;
-                            case FIELD_TAKEN:
-                                //pole zajęte przez nasz pionek
-                                pawn.setPedometer(oldPedometer); //nie można ruszyć, przypisanie starego krokomierza
-                                System.out.println("Cant move, field already occupied bo your pawn");
-                                return false;
-                        }
-                    } else if (pawn.getPedometer() == 43) {
-                        String newPawnPosition = "#end" + player.getPawnsColor() + "_4";
-                        switch (checkField(player, pawn, newPawnPosition)) {
-                            case NORMAL:
-                                pawn.setPosition(newPawnPosition);
-                                return true;
-                            case FIELD_TAKEN:
-                                //pole zajęte przez nasz pionek
-                                pawn.setPedometer(oldPedometer); //nie można ruszyć, przypisanie starego krokomierza
-                                System.out.println("Cant move, field already occupied bo your pawn");
-                                return false;
-                        }
                     } else {
                         System.out.println("Too much!");
                         //pawn.setPedometer(oldPedometer);
@@ -156,6 +130,27 @@ public class GameController {
         return false;
     }
 
+    public void checkWin(Player player) {
+        //#TODO
+        ;
+    }
+
+    public boolean checkIfLocked(Player player, Pawn pawn) {
+        int endPosition = parseInt(pawn.getPosition().substring(pawn.getPosition().length() - 1)); //pola końcowego
+        if (endPosition != 4) {
+            for (Pawn otherPawn : player.getPawns()) {
+                if (otherPawn.getPosition().equals("#end" + player.getPawnsColor() + (endPosition + 1)))//sprawdzamy pionek pole "do przodu"
+                {
+                    if (otherPawn.getStatus() == PawnStatusEnum.LOCKED_IN_HOME) {
+                        return true; //pionek "przed nami" jest już zablokowany, więc blokujemy swój
+                    }
+                }
+            }
+            return false;
+        }
+        return true; //w przypadku gdy wchodzimy na 4 pole końcowe (ostatnie)
+
+    }
 
     public MoveTypeEnum checkField(Player currentPlayer, Pawn pawnToMove, String field) {
         for (Player player : getPlayers()) {
