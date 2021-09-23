@@ -11,10 +11,10 @@ public class Pawn {
     private PawnsColorEnum color;
     private String originalHomePosition;
 
-    Pawn(Integer id, PawnsColorEnum color, String startingPosition) {
+    Pawn(Integer id, PawnsColorEnum color, String startingBoardPosition) {
         this.id = id;
-        this.position = startingPosition;
-        this.originalHomePosition = startingPosition;
+        this.position = "#" + startingBoardPosition;
+        this.originalHomePosition = "#" + startingBoardPosition;
         this.status = PawnStatusEnum.ON_SPAWN_POINT;
         this.color = color;
         this.pedometer = 0;

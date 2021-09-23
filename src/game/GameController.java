@@ -48,6 +48,8 @@ public class GameController {
                         String position = "";
                         switch (checkField(player, pawn, player.getStartingBoardPositionString())) {
                             case NORMAL:
+                            case PAWN_BEATING:
+                                //zbicie pionka przeciwnika następuje w funkcji checkField
                                 pawn.putPawnOnBoard(new String(String.valueOf(player.getStartingBoardPosition())));
                                 position = "#" + (new String(String.valueOf(player.getStartingBoardPosition())));
                                 System.out.println("POSITION " + position);
@@ -57,13 +59,6 @@ public class GameController {
                                 //pole zajęte przez nasz pionek
                                 System.out.println("Cant move, field already occupied bo your pawn");
                                 return false;
-                            case PAWN_BEATING:
-                                //zbicie pionka przeciwnika następuje w funkcji checkField
-                                pawn.putPawnOnBoard(new String(String.valueOf(player.getStartingBoardPosition())));
-                                position = "#" + (new String(String.valueOf(player.getStartingBoardPosition())));
-                                System.out.println("POSITION " + position);
-                                pawn.setPosition(position);
-                                break;
                         }
                     } else {
                         System.out.println("Cant move, you haven't rolled 6");
@@ -93,7 +88,7 @@ public class GameController {
                                 System.out.println("Cant move, field already occupied bo your pawn");
                                 return false;
                         }
-                    //#TODO może flaga dotycząca finalnie zajętych domków?
+                        //#TODO może flaga dotycząca finalnie zajętych domków?
                     } else if (pawn.getPedometer() == 40) {
                         String newPawnPosition = "#end" + player.getPawnsColor() + "_1";
                         switch (checkField(player, pawn, newPawnPosition)) {

@@ -4,6 +4,7 @@ package GUI;
 
 import game.Game;
 import game.GameController;
+import game.Pawn;
 import game.enums.GameStatusEnum;
 import game.Player;
 import javafx.fxml.FXML;
@@ -45,28 +46,6 @@ public class GameBoardController implements Initializable {
         this.gameController = new GameController(game);
     }
 
-    private void initializePawns() {
-        for (Player player : gameController.getPlayers()
-        ) {
-            for (int i = 0; i < 4; i++) {
-                String startingPosition = "#home" + player.getPawnsColor() + "_" + i;
-                Rectangle rec = (Rectangle) gamePane.getScene().lookup(startingPosition);
-                Bounds boundsInScene = rec.localToScene(rec.getBoundsInLocal());
-                Circle circle = new Circle(boundsInScene.getCenterX(), boundsInScene.getCenterY(), 20.0f,
-                        Color.valueOf(player.getPawnsColor().toLowerCase(Locale.ROOT)));
-                circle.setStroke(Color.BLACK);
-                circle.setStrokeWidth(20.0f * 0.1);
-
-
-                String pawnID = player.getPawnsColor().toString() + i;
-                circle.setId(pawnID);
-                circles.add(circle);
-                gamePane.getChildren().add(circle);
-            }
-
-        }
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Image diceImage = new Image(getClass().getResourceAsStream("dice.png"), 70, 70, false, false);
@@ -75,8 +54,7 @@ public class GameBoardController implements Initializable {
 
     @FXML
     void play() {
-        initializePawns();
-
+        updateBoard();
         gameController.setGameStatus(GameStatusEnum.IN_PROGRESS);
 
         rollDiceButton.setOnAction(actionEvent -> {
@@ -117,18 +95,43 @@ public class GameBoardController implements Initializable {
         boolean movable = gameController.movePawn(player, pawnID, rolled);
 
         if (movable) {
-            Rectangle newPawnRec = (Rectangle) gamePane.getScene().lookup(player.getPawns()[pawnID].getPosition());
-            System.out.println(player.getPawns()[pawnID].getPosition());
-            Bounds boundsInScene = newPawnRec.localToScene(newPawnRec.getBoundsInLocal());
-
-            int playerIndex = gameController.getPlayers().indexOf(player);
-            if (playerIndex > 0) {
-                circles.get(playerIndex * 4 + pawnID).relocate(newPawnRec.getLayoutX(), newPawnRec.getLayoutY());
-            } else {
-                circles.get(pawnID).relocate(newPawnRec.getLayoutX(), newPawnRec.getLayoutY());
-            }
+            updateBoard();
         }
     }
+
+    private void updateBoard() {
+        clearCircles();
+        for (Player player : gameController.getPlayers()
+        ) {
+            int i = 0;
+            for (Pawn pawn : player.getPawns()) {
+                String pawnPosition = pawn.getPosition();
+                Rectangle rec = (Rectangle) gamePane.getScene().lookup(pawnPosition);
+                Bounds boundsInScene = rec.localToScene(rec.getBoundsInLocal());
+                Circle circle = new Circle(boundsInScene.getCenterX(), boundsInScene.getCenterY(), 20.0f,
+                        Color.valueOf(player.getPawnsColor().toLowerCase(Locale.ROOT)));
+                circle.setStroke(Color.BLACK);
+                circle.setStrokeWidth(20.0f * 0.1);
+
+
+                String pawnID = player.getPawnsColor().toString() + i;
+                i++;
+                circle.setId(pawnID);
+                circles.add(circle);
+                gamePane.getChildren().add(circle);
+            }
+            i = 0;
+
+        }
+    }
+
+    private void clearCircles() {
+        for (Circle circle : circles) {
+            gamePane.getChildren().remove(circle);
+        }
+        circles.clear();
+    }
+
 
 }
 
