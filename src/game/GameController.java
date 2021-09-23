@@ -44,6 +44,7 @@ public class GameController {
         for (Pawn pawn : player.getPawns()
         ) {
             if (pawn.getId() == id) {
+                //#TODO rozbicie na kolejne funkcje
                 if (pawn.getStatus() == PawnStatusEnum.ON_SPAWN_POINT) {
                     if (rolled == 6) {
                         String position = "";
