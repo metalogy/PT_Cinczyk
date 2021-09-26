@@ -23,6 +23,7 @@ public class Pawn {
     public void backToHome() {
         this.position = this.originalHomePosition;
         this.status = PawnStatusEnum.ON_SPAWN_POINT;
+        this.pedometer = 0;
     }
 
     public void putPawnOnBoard(String position) {

@@ -10,11 +10,13 @@ import game.Player;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Bounds;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
@@ -36,7 +38,8 @@ public class GameBoardController implements Initializable {
 
     private Scene gameScene;
 
-    private int rollValidation = 1;
+    private boolean rollValidation = true;
+    private boolean extraRoll = false;
 
     //private String gameID;
     private GameController gameController;
@@ -58,24 +61,40 @@ public class GameBoardController implements Initializable {
         gameController.setGameStatus(GameStatusEnum.IN_PROGRESS);
 
         rollDiceButton.setOnAction(actionEvent -> {
-            if (this.rollValidation == 1) {
-                this.rollValidation = 0;
+            if (this.rollValidation) {
+                this.rollValidation = false;
                 int rolled = rollDice();
+                if (rolled == 6) {
+                    extraRoll = true;
+                }
+                //rollDiceButton.setDisable(ture);
                 //TODO zablokowanie wielokrotnego wciśnięcia rolowania
                 gamePane.setOnMouseClicked(event -> {
-                    if (event.getTarget() instanceof Circle) {
-                        String clickedPawnID = (((Circle) event.getTarget()).getId());
+                    if (!this.rollValidation) {
+                        if (event.getTarget() instanceof Circle) {
+                            String clickedPawnID = (((Circle) event.getTarget()).getId());
 
-                        String clickedPawnColour = clickedPawnID.substring(0, clickedPawnID.length() - 1);
-                        int pawnID = Integer.parseInt(clickedPawnID.substring(clickedPawnID.length() - 1));
+                            String clickedPawnColour = clickedPawnID.substring(0, clickedPawnID.length() - 1);
+                            int pawnID = Integer.parseInt(clickedPawnID.substring(clickedPawnID.length() - 1));
 
-                        if (gameController.getCurrentPlayer().getPawnsColor().equals(clickedPawnColour)) {
-                            move(gameController.getCurrentPlayer(), pawnID, rolled);
-                            this.rollValidation = 1;
-                            gameController.nextPlayer(); //#TODO wciskanie bez rollowania
+                            if (gameController.getCurrentPlayer().getPawnsColor().equals(clickedPawnColour)) {
+                                move(gameController.getCurrentPlayer(), pawnID, rolled);
+                                if (true) {
+                                //if (gameController.checkWin(gameController.getCurrentPlayer())) {
+                                    System.out.println("Player " + gameController.getCurrentPlayer().getPawnsColor()
+                                            + " WIN!");
+                                    gameEnded(gameController.getCurrentPlayer());
+                                }
+                                if (!extraRoll) {
+                                    gameController.nextPlayer(); //#TODO wciskanie bez rollowania
 
-                        } else {
-                            System.out.println("Zły pionek!"); //#TODO jakiś komunikat w GUI
+                                }
+                                this.extraRoll = false;
+                                this.rollValidation = true;
+
+                            } else {
+                                System.out.println("Zły pionek!"); //#TODO jakiś komunikat w GUI
+                            }
                         }
                     }
                 });
@@ -98,7 +117,15 @@ public class GameBoardController implements Initializable {
             updateBoard();
         }
     }
-
+    private void gameEnded(Player player)
+    {
+        this.gamePane.getChildren().clear();
+        Text endText= new Text(this.gamePane.getWidth()/2,this.gamePane.getHeight()/2,"Player "+player.getLogin()+" has won!");
+        this.gamePane.getChildren().add(endText);
+        Button backToMenu = new Button("Back to menu");
+        backToMenu.setOnMouseClicked(mouseEvent ->
+                );
+    }
     private void updateBoard() {
         clearCircles();
         for (Player player : gameController.getPlayers()

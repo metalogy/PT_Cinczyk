@@ -6,6 +6,7 @@ import game.enums.PawnStatusEnum;
 
 import java.util.ArrayList;
 
+import static game.LockController.checkIfLocked;
 import static java.lang.Integer.parseInt;
 
 public class GameController {
@@ -48,7 +49,7 @@ public class GameController {
                 if (pawn.getStatus() == PawnStatusEnum.ON_SPAWN_POINT) {
                     if (rolled == 6) {
                         String position = "";
-                        switch (checkField(player, pawn, player.getStartingBoardPositionString())) {
+                        switch (checkField(player, player.getStartingBoardPositionString())) {
                             case NORMAL:
                             case PAWN_BEATING:
                                 //zbicie pionka przeciwnika następuje w funkcji checkField
@@ -67,6 +68,7 @@ public class GameController {
                         return false;
                     }
                 } else if (pawn.getStatus() == PawnStatusEnum.ON_BOARD) {
+
                     Integer oldPedometer = pawn.getPedometer();
                     pawn.setPedometer(pawn.getPedometer() + rolled);
 
@@ -78,7 +80,7 @@ public class GameController {
                         } else {
                             newPawnPosition = "#" + pawn.getPedometer();
                         }
-                        switch (checkField(player, pawn, newPawnPosition)) {
+                        switch (checkField(player, newPawnPosition)) {
                             case NORMAL:
                             case PAWN_BEATING:
                                 //zbicie pionka przeciwnika następuje w funkcji checkField
@@ -90,21 +92,22 @@ public class GameController {
                                 System.out.println("Cant move, field already occupied bo your pawn");
                                 return false;
                         }
-                    } else if (pawn.getPedometer() >= 40) {
+                    } else if (pawn.getPedometer() >= 40 && pawn.getPedometer() < 44) {
                         String newPawnPosition = "";
                         switch (pawn.getPedometer()) {
                             case 40 -> newPawnPosition = "#end" + player.getPawnsColor() + "_1";
                             case 41 -> newPawnPosition = "#end" + player.getPawnsColor() + "_2";
                             case 42 -> newPawnPosition = "#end" + player.getPawnsColor() + "_3";
                             case 43 -> newPawnPosition = "#end" + player.getPawnsColor() + "_4";
+                            //
                         }
-                        switch (checkField(player, pawn, newPawnPosition)) {
+                        switch (checkField(player, newPawnPosition)) {
                             case NORMAL:
                                 pawn.setPosition(newPawnPosition);
-                                if(checkIfLocked(player,pawn))
-                                {
+                                if (checkIfLocked(player, pawn)) {
                                     pawn.setStatus(PawnStatusEnum.LOCKED_IN_HOME); //
                                 }
+                                // LockController.updateLock(player);
                                 return true;
                             case FIELD_TAKEN:
                                 //pole zajęte przez nasz pionek
@@ -115,7 +118,7 @@ public class GameController {
 
                     } else {
                         System.out.println("Too much!");
-                        //pawn.setPedometer(oldPedometer);
+                        pawn.setPedometer(oldPedometer);
                         return false;
                     }
                 }
@@ -125,17 +128,29 @@ public class GameController {
                     System.out.println("Final pawn position, cant move");
                     return false;
                 }
+                //LockController.updateLock(player);
             }
-
         }
         return false;
     }
 
-    public void checkWin(Player player) {
-        //#TODO
-        ;
+    public boolean checkWin(Player player) {
+        if(WinningConditionController.check(player))
+        {
+            this.game.setGameStatus(GameStatusEnum.FINISHED);
+            return true;
+        }
+        return false;
     }
 
+    //    public void updateLock(Player player) {
+//        for (Pawn pawn : player.getPawns()) {
+//            if (checkIfLocked(player, pawn)) {
+//                pawn.setStatus(PawnStatusEnum.LOCKED_IN_HOME);
+//            }
+//        }
+//    }
+//
     public boolean checkIfLocked(Player player, Pawn pawn) {
         int endPosition = parseInt(pawn.getPosition().substring(pawn.getPosition().length() - 1)); //pola końcowego
         if (endPosition != 4) {
@@ -150,10 +165,9 @@ public class GameController {
             return false;
         }
         return true; //w przypadku gdy wchodzimy na 4 pole końcowe (ostatnie)
-
     }
 
-    public MoveTypeEnum checkField(Player currentPlayer, Pawn pawnToMove, String field) {
+    public MoveTypeEnum checkField(Player currentPlayer, String field) {
         for (Player player : getPlayers()) {
             for (Pawn pawn : player.getPawns()) {
                 if (pawn.getPosition().equals(field)) {
