@@ -29,11 +29,19 @@ public class LoginScreenController {
         ArrayList<Player> playerArrayList=new ArrayList<Player>();
         playerArrayList.add(player);
         playerArrayList.add(player2);
+//        Player player=new Player(PawnsColorEnum.Red,"test");
+//        ArrayList<Player> playerArrayList=new ArrayList<Player>();
+//        playerArrayList.add(player);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("GameBoard.fxml"));
         Game game = new Game("TestGame",playerArrayList);
         GameBoardController controller=new GameBoardController(game);
         loader.setController(controller);
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("GameBoard.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("PlayerScreen.fxml"));
+//        GameBoardController controller=new GameBoardController("test",playerArrayList);
+        PlayerScreen controller=new PlayerScreen();
+//        loader.setController(controller);
         Parent gameParent = loader.load();
 
         Scene gameScene = new Scene(gameParent);
