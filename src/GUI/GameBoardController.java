@@ -2,10 +2,10 @@ package GUI;
 
 //import game.Game;
 
-import game.Game;
+import game.*;
 import game.GameController;
 import game.Pawn;
-import game.enums.GameStatusEnum;
+import game.enums.*;
 import game.Player;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

@@ -23,14 +23,10 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ChoiceBox fx:id="choicebox2" prefHeight="31.0" prefWidth="169.0" GridPane.rowIndex="2" />
-            <ChoiceBox fx:id="choicebox5" prefHeight="31.0" prefWidth="169.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <ChoiceBox fx:id="choicebox1" prefHeight="31.0" prefWidth="169.0" GridPane.rowIndex="1" />
-            <ChoiceBox fx:id="choicebox6" layoutX="188.0" layoutY="23.0" prefHeight="31.0" prefWidth="169.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <ChoiceBox fx:id="choicebox3" layoutX="10.0" layoutY="23.0" prefHeight="31.0" prefWidth="169.0" GridPane.rowIndex="3" />
-            <ChoiceBox fx:id="choicebox7" layoutX="10.0" layoutY="23.0" prefHeight="31.0" prefWidth="169.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <ChoiceBox fx:id="choicebox4" layoutX="10.0" layoutY="23.0" prefHeight="31.0" prefWidth="169.0" GridPane.rowIndex="4" />
-            <ChoiceBox fx:id="choicebox8" layoutX="10.0" layoutY="23.0" prefHeight="31.0" prefWidth="169.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <ChoiceBox fx:id="choicebox1" prefHeight="31.0" prefWidth="169.0" GridPane.columnIndex="1" GridPane.rowIndex="1" value="None"/>
+            <ChoiceBox fx:id="choicebox2" layoutX="188.0" layoutY="23.0" prefHeight="31.0" prefWidth="169.0" GridPane.columnIndex="1" GridPane.rowIndex="2" value="None" />
+            <ChoiceBox fx:id="choicebox3" layoutX="10.0" layoutY="23.0" prefHeight="31.0" prefWidth="169.0" GridPane.columnIndex="1" GridPane.rowIndex="3" value="None"/>
+            <ChoiceBox fx:id="choicebox4" layoutX="10.0" layoutY="23.0" prefHeight="31.0" prefWidth="169.0" GridPane.columnIndex="1" GridPane.rowIndex="4" value="None"/>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Player">
                <font>
                   <Font name="Calibri Bold" size="24.0" />
@@ -42,6 +38,10 @@
                </font>
             </Text>
             <Button fx:id="startButton" mnemonicParsing="false" onAction="#startGame" text="Start game" GridPane.rowIndex="5" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Player1" GridPane.rowIndex="1" />
+            <Text layoutX="10.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player2" GridPane.rowIndex="2" />
+            <Text layoutX="10.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player3" GridPane.rowIndex="3" />
+            <Text layoutX="10.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player4" GridPane.rowIndex="4" />
          </children>
       </GridPane>
    </children>

@@ -29,19 +29,12 @@ public class PlayerScreen implements Initializable {
     private ChoiceBox<String>choicebox3;
     @FXML
     private ChoiceBox<String>choicebox4;
-    @FXML
-    private ChoiceBox<String>choicebox5;
-    @FXML
-    private ChoiceBox<String>choicebox6;
-    @FXML
-    private ChoiceBox<String>choicebox7;
-    @FXML
-    private ChoiceBox<String>choicebox8;
+
     @FXML
     private Button startButton;
-
+    private ArrayList<ChoiceBox<String>>Choiceboxes;
     private Game game;
-    private String[] player={"player1","player2","player3","player4"};
+
     private String[] colour={"red","blue","yellow","green"};
 
 //    public PlayerScreen(Game game) {
@@ -52,29 +45,70 @@ public PlayerScreen() {
 }
     @FXML
     private void startGame(ActionEvent event) throws IOException {
-        Player player=new Player(PawnsColorEnum.Red,"test");
-        ArrayList<Player> playerArrayList=new ArrayList<Player>();
-        playerArrayList.add(player);
+    Choiceboxes=new ArrayList<ChoiceBox<String>>();
+    Choiceboxes.add(choicebox1);
+    Choiceboxes.add(choicebox2);
+    Choiceboxes.add(choicebox3);
+    Choiceboxes.add(choicebox4);
+        int red=0,blue = 0,yellow=0,green=0;
+        for(ChoiceBox<String>choicebox : Choiceboxes){
+            switch (choicebox.getValue()){
+                    case "red":
+                    red+=1;
+                    break;
+                    case "green":
+                    green+=1;
+                    break;
+                    case "blue":
+                    blue+=1;
+                    break;
+                    case "yellow":
+                    yellow+=1;
+                    break;
+                    default:
+                    break;
+            }
+        }
+        if(red<2&&blue<2&&green<2&&yellow<2){
+            ArrayList<Player> playerArrayList=new ArrayList<Player>();
+            if(red==1){
+                Player player = new Player(PawnsColorEnum.Red, "red");
+                playerArrayList.add(player);
+            }
+            if (blue==1){
+                Player player = new Player(PawnsColorEnum.Blue, "blue");
+                playerArrayList.add(player);
+            }
+            if (yellow==1){
+                Player player = new Player(PawnsColorEnum.Yellow, "yellow");
+                playerArrayList.add(player);
+            }
+            if (green==1){
+                Player player = new Player(PawnsColorEnum.Green, "green");
+                playerArrayList.add(player);
+            }
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("GameBoard.fxml"));
-        GameBoardController controller=new GameBoardController(this.game);
-        loader.setController(controller);
-        Parent gameParent = loader.load();
-        Scene gameScene = new Scene(gameParent);
-        Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        appStage.setScene(gameScene);
-        appStage.show();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("GameBoard.fxml"));
+            Game game = new Game("TestGame",playerArrayList);
+            GameBoardController controller=new GameBoardController(game);
+            loader.setController(controller);
+            Parent gameParent = loader.load();
+            Scene gameScene = new Scene(gameParent);
+            Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            appStage.setScene(gameScene);
+            appStage.show();
+
+
+
+        }
+
 
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        choicebox1.getItems().addAll(player);
-        choicebox2.getItems().addAll(player);
-        choicebox3.getItems().addAll(player);
-        choicebox4.getItems().addAll(player);
-        choicebox5.getItems().addAll(colour);
-        choicebox6.getItems().addAll(colour);
-        choicebox7.getItems().addAll(colour);
-        choicebox8.getItems().addAll(colour);
-    }
-}
+        choicebox1.getItems().addAll(colour);
+        choicebox2.getItems().addAll(colour);
+        choicebox3.getItems().addAll(colour);
+        choicebox4.getItems().addAll(colour);
+
+}}
