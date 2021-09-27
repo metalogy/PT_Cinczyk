@@ -1,198 +1,185 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
-
-<?import javafx.scene.text.Text?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.shape.Circle?>
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="806.0"
       prefWidth="600.0"
       fx:id="gamePane" xmlns="http://javafx.com/javafx/16"
-      xmlns:fx="http://javafx.com/fxml/1"><!-- fx:controller="GUI.GameBoardController"> -->
-    <children>
-        <Rectangle fx:id="30" arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="40.0" layoutX="240.0" layoutY="555.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="32" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="240.0" layoutY="475.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="31" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="240.0" layoutY="515.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="33" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="240.0" layoutY="435.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="34" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="240.0" layoutY="395.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="29" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="280.0" layoutY="555.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="28" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="320.0" layoutY="555.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="27" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="320.0" layoutY="515.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="26" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="320.0" layoutY="475.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="25" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="320.0" layoutY="435.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="24" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="320.0" layoutY="395.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="endYellow_1" arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="40.0" layoutX="280.0"
-                   layoutY="515.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="endYellow_2" arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="40.0" layoutX="280.0"
-                   layoutY="475.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="endYellow_3" arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="40.0" layoutX="280.0"
-                   layoutY="435.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="endYellow_4" arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="40.0" layoutX="280.0"
-                   layoutY="395.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="23" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="360.0" layoutY="395.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="22" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="400.0" layoutY="395.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="21" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="440.0" layoutY="395.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="20" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="40.0" layoutX="480.0" layoutY="395.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="35" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="200.0" layoutY="395.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="36" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="160.0" layoutY="395.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="37" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="120.0" layoutY="395.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="38" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="80.0" layoutY="395.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="endRed_3" arcHeight="5.0" arcWidth="5.0" fill="RED" height="40.0" layoutX="200.0"
-                   layoutY="355.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="endRed_2" arcHeight="5.0" arcWidth="5.0" fill="RED" height="40.0" layoutX="160.0"
-                   layoutY="355.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="endRed_1" arcHeight="5.0" arcWidth="5.0" fill="RED" height="40.0" layoutX="120.0"
-                   layoutY="355.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="39" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="80.0" layoutY="355.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="3" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="200.0" layoutY="315.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="2" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="160.0" layoutY="315.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="1" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="120.0" layoutY="315.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="0" arcHeight="5.0" arcWidth="5.0" fill="RED" height="40.0" layoutX="80.0" layoutY="315.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="19" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="480.0" layoutY="355.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="endGreen_1" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="40.0" layoutX="440.0"
-                   layoutY="355.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="endGreen_2" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="40.0" layoutX="400.0"
-                   layoutY="355.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="endGreen_3" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="40.0" layoutX="360.0"
-                   layoutY="355.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="18" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="480.0" layoutY="315.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="17" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="440.0" layoutY="315.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="16" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="400.0" layoutY="315.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="15" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="360.0" layoutY="315.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="5" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="240.0" layoutY="275.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="7" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="240.0" layoutY="195.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="6" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="240.0" layoutY="235.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="8" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="240.0" layoutY="155.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="endBlue_3" arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="40.0" layoutX="280.0"
-                   layoutY="275.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="13" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="320.0" layoutY="275.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="12" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="320.0" layoutY="235.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="11" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="320.0" layoutY="195.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="10" arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="40.0" layoutX="320.0" layoutY="155.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="endBlue_2" arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="40.0" layoutX="280.0"
-                   layoutY="235.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="endBlue_1" arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="40.0" layoutX="280.0"
-                   layoutY="195.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="9" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="280.0" layoutY="155.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="4" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="240.0" layoutY="315.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="14" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="320.0" layoutY="315.0"
-                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="endBlue_4" arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="40.0" layoutX="280.0"
-                   layoutY="315.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="endRed_4" arcHeight="5.0" arcWidth="5.0" fill="RED" height="40.0" layoutX="240.0"
-                   layoutY="355.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle fx:id="endGreen_4" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="40.0" layoutX="320.0"
-                   layoutY="355.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" height="40.0" layoutX="280.0" layoutY="355.0" stroke="BLACK"
+      xmlns:fx="http://javafx.com/fxml/1">
+    <Rectangle fx:id="30" arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="40.0" layoutX="240.0" layoutY="555.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="32" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="240.0" layoutY="475.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="31" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="240.0" layoutY="515.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="33" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="240.0" layoutY="435.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="34" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="240.0" layoutY="395.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="29" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="280.0" layoutY="555.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="28" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="320.0" layoutY="555.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="27" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="320.0" layoutY="515.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="26" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="320.0" layoutY="475.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="25" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="320.0" layoutY="435.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="24" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="320.0" layoutY="395.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="endYellow_1" arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="40.0" layoutX="280.0"
+               layoutY="515.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="endYellow_2" arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="40.0" layoutX="280.0"
+               layoutY="475.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="endYellow_3" arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="40.0" layoutX="280.0"
+               layoutY="435.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="endYellow_4" arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="40.0" layoutX="280.0"
+               layoutY="395.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="23" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="360.0" layoutY="395.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="22" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="400.0" layoutY="395.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="21" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="440.0" layoutY="395.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="20" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="40.0" layoutX="480.0" layoutY="395.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="35" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="200.0" layoutY="395.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="36" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="160.0" layoutY="395.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="37" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="120.0" layoutY="395.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="38" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="80.0" layoutY="395.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="endRed_3" arcHeight="5.0" arcWidth="5.0" fill="RED" height="40.0" layoutX="200.0"
+               layoutY="355.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="endRed_2" arcHeight="5.0" arcWidth="5.0" fill="RED" height="40.0" layoutX="160.0"
+               layoutY="355.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="endRed_1" arcHeight="5.0" arcWidth="5.0" fill="RED" height="40.0" layoutX="120.0"
+               layoutY="355.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="39" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="80.0" layoutY="355.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="3" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="200.0" layoutY="315.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="2" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="160.0" layoutY="315.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="1" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="120.0" layoutY="315.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="0" arcHeight="5.0" arcWidth="5.0" fill="RED" height="40.0" layoutX="80.0" layoutY="315.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="19" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="480.0" layoutY="355.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="endGreen_1" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="40.0" layoutX="440.0"
+               layoutY="355.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="endGreen_2" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="40.0" layoutX="400.0"
+               layoutY="355.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="endGreen_3" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="40.0" layoutX="360.0"
+               layoutY="355.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="18" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="480.0" layoutY="315.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="17" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="440.0" layoutY="315.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="16" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="400.0" layoutY="315.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="15" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="360.0" layoutY="315.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="5" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="240.0" layoutY="275.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="7" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="240.0" layoutY="195.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="6" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="240.0" layoutY="235.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="8" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="240.0" layoutY="155.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="endBlue_3" arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="40.0" layoutX="280.0"
+               layoutY="275.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="13" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="320.0" layoutY="275.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="12" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="320.0" layoutY="235.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="11" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="320.0" layoutY="195.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="10" arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="40.0" layoutX="320.0" layoutY="155.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="endBlue_2" arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="40.0" layoutX="280.0"
+               layoutY="235.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="endBlue_1" arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="40.0" layoutX="280.0"
+               layoutY="195.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="9" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="280.0" layoutY="155.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="4" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="240.0" layoutY="315.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="14" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="40.0" layoutX="320.0" layoutY="315.0"
+               stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="endBlue_4" arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="40.0" layoutX="280.0"
+               layoutY="315.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="endRed_4" arcHeight="5.0" arcWidth="5.0" fill="RED" height="40.0" layoutX="240.0"
+               layoutY="355.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle fx:id="endGreen_4" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="40.0" layoutX="320.0"
+               layoutY="355.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    <Rectangle arcHeight="5.0" arcWidth="5.0" height="40.0" layoutX="280.0" layoutY="355.0" stroke="BLACK"
+               strokeType="INSIDE" width="40.0"/>
+    <Pane fx:id="homePaneRed" layoutX="80.0" layoutY="155.0" prefHeight="80.0" prefWidth="80.0">
+        <Rectangle fx:id="homeRed_0" arcHeight="5.0" arcWidth="5.0" fill="RED" height="40.0" stroke="BLACK"
                    strokeType="INSIDE" width="40.0"/>
-        <Pane fx:id="homePaneRed" layoutX="80.0" layoutY="155.0" prefHeight="80.0" prefWidth="80.0">
-            <children>
-                <Rectangle fx:id="homeRed_0" arcHeight="5.0" arcWidth="5.0" fill="RED" height="40.0" stroke="BLACK"
-                           strokeType="INSIDE" width="40.0"/>
-                <Rectangle fx:id="homeRed_3" arcHeight="5.0" arcWidth="5.0" fill="RED" height="40.0" layoutX="40.0"
-                           layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-                <Rectangle fx:id="homeRed_2" arcHeight="5.0" arcWidth="5.0" fill="RED" height="40.0" layoutY="40.0"
-                           stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-                <Rectangle fx:id="homeRed_1" arcHeight="5.0" arcWidth="5.0" fill="RED" height="40.0" layoutX="40.0"
-                           stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-            </children>
-        </Pane>
-        <Pane fx:id="homePaneBlue" layoutX="440.0" layoutY="155.0" prefHeight="80.0" prefWidth="80.0">
-            <children>
-                <Rectangle fx:id="homeBlue_0" arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="40.0" stroke="BLACK"
-                           strokeType="INSIDE" width="40.0"/>
-                <Rectangle fx:id="homeBlue_3" arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="40.0" layoutX="40.0"
-                           layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-                <Rectangle fx:id="homeBlue_2" arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="40.0" layoutY="40.0"
-                           stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-                <Rectangle fx:id="homeBlue_1" arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="40.0" layoutX="40.0"
-                           stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-            </children>
-        </Pane>
-        <Pane fx:id="homePaneYellow" layoutX="80.0" layoutY="515.0" prefHeight="80.0" prefWidth="80.0">
-            <children>
-                <Rectangle fx:id="homeYellow_0" arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="40.0"
-                           stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-                <Rectangle fx:id="homeYellow_3" arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="40.0"
-                           layoutX="40.0" layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-                <Rectangle fx:id="homeYellow_2" arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="40.0"
-                           layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-                <Rectangle fx:id="homeYellow_1" arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="40.0"
-                           layoutX="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-            </children>
-        </Pane>
-        <Pane fx:id="homePaneGreen" layoutX="448.0" layoutY="515.0" prefHeight="80.0" prefWidth="80.0">
-            <children>
-                <Rectangle fx:id="homeGreen_0" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="40.0" stroke="BLACK"
-                           strokeType="INSIDE" width="40.0"/>
-                <Rectangle fx:id="homeGreen_3" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="40.0" layoutX="40.0"
-                           layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-                <Rectangle fx:id="homeGreen_2" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="40.0" layoutY="40.0"
-                           stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-                <Rectangle fx:id="homeGreen_1" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="40.0" layoutX="40.0"
-                           stroke="BLACK" strokeType="INSIDE" width="40.0"/>
-            </children>
-        </Pane>
-        <Button fx:id="rollDiceButton" layoutX="500.0" layoutY="675.0" mnemonicParsing="false" onAction="#rollDice"/>
-        <Button fx:id="endTurnButton" layoutX="400" layoutY="675.0" mnemonicParsing="false" onAction="#endTurn"/>
-        <Button fx:id="playButton" layoutX="300" layoutY="675.0" mnemonicParsing="false" onAction="#play" />
-        <Text fx:id="rollResult" layoutX="490.0" layoutY="800.0">
-            <font>
-                <Font name="Calibri Bold" size="24.0"/>
-            </font>
-        </Text>
-        <Text fx:id="playerTurn" layoutX="80" layoutY="720.0">
-            <font>
-                <Font name="Calibri Bold" size="18.0"/>
-            </font>
-        </Text>
-        <Text fx:id="warning" layoutX="40" layoutY="100.0">
-            <font>
-                <Font name="Calibri Bold" size="24.0"/>
-            </font>
-        </Text>
-        <Circle fx:id="turnCircle" layoutX="40" layoutY="720.0" radius="25.0" fill="white"/>
-    </children>
+        <Rectangle fx:id="homeRed_3" arcHeight="5.0" arcWidth="5.0" fill="RED" height="40.0" layoutX="40.0"
+                   layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+        <Rectangle fx:id="homeRed_2" arcHeight="5.0" arcWidth="5.0" fill="RED" height="40.0" layoutY="40.0"
+                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+        <Rectangle fx:id="homeRed_1" arcHeight="5.0" arcWidth="5.0" fill="RED" height="40.0" layoutX="40.0"
+                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    </Pane>
+    <Pane fx:id="homePaneBlue" layoutX="440.0" layoutY="155.0" prefHeight="80.0" prefWidth="80.0">
+        <Rectangle fx:id="homeBlue_0" arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="40.0" stroke="BLACK"
+                   strokeType="INSIDE" width="40.0"/>
+        <Rectangle fx:id="homeBlue_3" arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="40.0" layoutX="40.0"
+                   layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+        <Rectangle fx:id="homeBlue_2" arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="40.0" layoutY="40.0"
+                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+        <Rectangle fx:id="homeBlue_1" arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="40.0" layoutX="40.0"
+                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    </Pane>
+    <Pane fx:id="homePaneYellow" layoutX="80.0" layoutY="515.0" prefHeight="80.0" prefWidth="80.0">
+        <Rectangle fx:id="homeYellow_0" arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="40.0"
+                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+        <Rectangle fx:id="homeYellow_3" arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="40.0"
+                   layoutX="40.0" layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+        <Rectangle fx:id="homeYellow_2" arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="40.0"
+                   layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+        <Rectangle fx:id="homeYellow_1" arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="40.0"
+                   layoutX="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    </Pane>
+    <Pane fx:id="homePaneGreen" layoutX="448.0" layoutY="515.0" prefHeight="80.0" prefWidth="80.0">
+        <Rectangle fx:id="homeGreen_0" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="40.0" stroke="BLACK"
+                   strokeType="INSIDE" width="40.0"/>
+        <Rectangle fx:id="homeGreen_3" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="40.0" layoutX="40.0"
+                   layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+        <Rectangle fx:id="homeGreen_2" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="40.0" layoutY="40.0"
+                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+        <Rectangle fx:id="homeGreen_1" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="40.0" layoutX="40.0"
+                   stroke="BLACK" strokeType="INSIDE" width="40.0"/>
+    </Pane>
+    <Button fx:id="rollDiceButton" layoutX="500.0" layoutY="675.0" mnemonicParsing="false" onAction="#rollDice"/>
+    <Button fx:id="endTurnButton" layoutX="400" layoutY="675.0" mnemonicParsing="false" onAction="#endTurn"/>
+    <Button fx:id="playButton" layoutX="300" layoutY="675.0" mnemonicParsing="false" onAction="#play"/>
+    <Text fx:id="rollResult" layoutX="490.0" layoutY="800.0">
+        <font>
+            <Font name="Calibri Bold" size="24.0"/>
+        </font>
+    </Text>
+    <Text fx:id="playerTurn" layoutX="80" layoutY="720.0">
+        <font>
+            <Font name="Calibri Bold" size="18.0"/>
+        </font>
+    </Text>
+    <Text fx:id="warning" layoutX="40" layoutY="100.0">
+        <font>
+            <Font name="Calibri Bold" size="24.0"/>
+        </font>
+    </Text>
+    <Circle fx:id="turnCircle" layoutX="40" layoutY="720.0" radius="25.0" fill="white"/>
 </Pane>

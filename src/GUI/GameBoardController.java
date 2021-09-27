@@ -58,7 +58,7 @@ public class GameBoardController implements Initializable {
     private boolean extraRoll = false;
     //private String gameID;
     private GameController gameController;
-    private ArrayList<Circle> circles = new ArrayList<Circle>(); //przechowuje okręgi - wizualizację pionków
+    private ArrayList<Circle> circles = new ArrayList<>(); //przechowuje okręgi - wizualizację pionków
 
     public GameBoardController(Game game) {
         this.gameController = new GameController(game);
@@ -71,14 +71,14 @@ public class GameBoardController implements Initializable {
         Image hourglassImage = new Image(getClass().getResourceAsStream("res/hourglass.png"), 70, 70, false, false);
         endTurnButton.setGraphic(new ImageView(hourglassImage));
         Image playImage = new Image(getClass().getResourceAsStream("res/play.png"), 70, 70, false, false);
-       playButton.setGraphic(new ImageView(playImage));
+        playButton.setGraphic(new ImageView(playImage));
 
 
     }
 
     @FXML
     void endTurn() {
-        this.rollValidation=true;
+        this.rollValidation = true;
         this.gameController.nextPlayer();
         setPlayerTurnLabel(gameController);
     }
@@ -112,7 +112,6 @@ public class GameBoardController implements Initializable {
 
                             if (gameController.getCurrentPlayer().getPawnsColor().equals(clickedPawnColour)) {
                                 if (move(gameController.getCurrentPlayer(), pawnID, rolled)) {
-                                    //if (true) {
                                     if (gameController.checkWin(gameController.getCurrentPlayer())) {
                                         System.out.println("Player " + gameController.getCurrentPlayer().getPawnsColor()
                                                 + " WON!");
@@ -126,24 +125,19 @@ public class GameBoardController implements Initializable {
                                     this.extraRoll = false;
                                     this.rollValidation = true;
 
-                                }
-                                else {
+                                } else {
                                     setWarning("Can't move!");
                                 }
                             } else {
-                                //System.out.println("Zły pionek!");
                                 setWarning("Wrong pawn!");
 
                             }
                         }
-                    }
-                    else{
+                    } else {
                         setWarning("You have to roll!");
                     }
                 });
-            }
-            else
-            {
+            } else {
                 setWarning("Already rolled!");
             }
         });
@@ -171,9 +165,6 @@ public class GameBoardController implements Initializable {
     }
 
     private boolean move(Player player, int pawnID, Integer rolled) {
-
-        //boolean movable = gameController.movePawn(player, pawnID, rolled);
-
         if (gameController.movePawn(player, pawnID, rolled)) {
             updateBoard();
             return true;
@@ -223,14 +214,12 @@ public class GameBoardController implements Initializable {
                 circle.setStrokeWidth(20.0f * 0.1);
 
 
-                String pawnID = player.getPawnsColor().toString() + i;
+                String pawnID = player.getPawnsColor() + i;
                 i++;
                 circle.setId(pawnID);
                 circles.add(circle);
                 gamePane.getChildren().add(circle);
             }
-            i = 0;
-
         }
     }
 
