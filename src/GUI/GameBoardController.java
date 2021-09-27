@@ -38,6 +38,8 @@ public class GameBoardController implements Initializable {
     @FXML
     private Button rollDiceButton;
     @FXML
+    private Button endTurnButton;
+    @FXML
     private Text rollResult;
     @FXML
     private Pane gamePane;
@@ -64,17 +66,32 @@ public class GameBoardController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Image diceImage = new Image(getClass().getResourceAsStream("dice.png"), 70, 70, false, false);
+        Image diceImage = new Image(getClass().getResourceAsStream("res/dice.png"), 70, 70, false, false);
         rollDiceButton.setGraphic(new ImageView(diceImage));
+        Image hourglassImage = new Image(getClass().getResourceAsStream("res/hourglass.png"), 70, 70, false, false);
+        endTurnButton.setGraphic(new ImageView(hourglassImage));
+        Image playImage = new Image(getClass().getResourceAsStream("res/play.png"), 70, 70, false, false);
+       playButton.setGraphic(new ImageView(playImage));
+
+
+    }
+
+    @FXML
+    void endTurn() {
+        this.rollValidation=true;
+        this.gameController.nextPlayer();
+        setPlayerTurnLabel(gameController);
     }
 
     @FXML
     void play() {
         playButton.setVisible(false);
         updateBoard();
-        gameController.setGameStatus(GameStatusEnum.IN_PROGRESS);
+        this.gameController.setGameStatus(GameStatusEnum.IN_PROGRESS);
+        setPlayerTurnLabel(gameController);
 
         rollDiceButton.setOnAction(actionEvent -> {
+            clearWarning();
             setPlayerTurnLabel(gameController);
             if (this.rollValidation) {
                 this.rollValidation = false;
@@ -82,6 +99,7 @@ public class GameBoardController implements Initializable {
                 if (rolled == 6) {
                     extraRoll = true;
                 }
+                clearWarning();
 
                 gamePane.setOnMouseClicked(event -> {
                     clearWarning();
@@ -93,20 +111,25 @@ public class GameBoardController implements Initializable {
                             int pawnID = Integer.parseInt(clickedPawnID.substring(clickedPawnID.length() - 1));
 
                             if (gameController.getCurrentPlayer().getPawnsColor().equals(clickedPawnColour)) {
-                                move(gameController.getCurrentPlayer(), pawnID, rolled);
-                                //if (true) {
-                                if (gameController.checkWin(gameController.getCurrentPlayer())) {
-                                    System.out.println("Player " + gameController.getCurrentPlayer().getPawnsColor()
-                                            + " WIN!");
-                                    gameEnded(gameController.getCurrentPlayer());
-                                }
-                                if (!extraRoll) {
-                                    gameController.nextPlayer();
+                                if (move(gameController.getCurrentPlayer(), pawnID, rolled)) {
+                                    //if (true) {
+                                    if (gameController.checkWin(gameController.getCurrentPlayer())) {
+                                        System.out.println("Player " + gameController.getCurrentPlayer().getPawnsColor()
+                                                + " WON!");
+                                        gameEnded(gameController.getCurrentPlayer());
+                                    }
+                                    if (!extraRoll) {
+                                        gameController.nextPlayer();
+
+
+                                    }
+                                    this.extraRoll = false;
+                                    this.rollValidation = true;
 
                                 }
-                                this.extraRoll = false;
-                                this.rollValidation = true;
-
+                                else {
+                                    setWarning("Can't move!");
+                                }
                             } else {
                                 //System.out.println("Zły pionek!");
                                 setWarning("Wrong pawn!");
@@ -114,7 +137,14 @@ public class GameBoardController implements Initializable {
                             }
                         }
                     }
+                    else{
+                        setWarning("You have to roll!");
+                    }
                 });
+            }
+            else
+            {
+                setWarning("Already rolled!");
             }
         });
     }
@@ -140,13 +170,15 @@ public class GameBoardController implements Initializable {
         return rolled;
     }
 
-    private void move(Player player, int pawnID, Integer rolled) {
+    private boolean move(Player player, int pawnID, Integer rolled) {
 
-        boolean movable = gameController.movePawn(player, pawnID, rolled);
+        //boolean movable = gameController.movePawn(player, pawnID, rolled);
 
-        if (movable) {
+        if (gameController.movePawn(player, pawnID, rolled)) {
             updateBoard();
+            return true;
         }
+        return false;
     }
 
     private void gameEnded(Player player) {
