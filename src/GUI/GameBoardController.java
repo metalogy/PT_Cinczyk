@@ -81,6 +81,7 @@ public class GameBoardController implements Initializable {
         this.rollValidation = true;
         this.gameController.nextPlayer();
         setPlayerTurnLabel(gameController);
+        clearRollLabel();
     }
 
     @FXML
@@ -98,6 +99,7 @@ public class GameBoardController implements Initializable {
                 int rolled = rollDice();
                 if (rolled == 6) {
                     extraRoll = true;
+                    this.rollValidation=true; //możliwość ponownego rzutu, gdy mamy wyrzucone 6, potrzebne gdy wyrzucimy, a nie możemy się ruszyć
                 }
                 clearWarning();
 
@@ -119,7 +121,8 @@ public class GameBoardController implements Initializable {
                                     }
                                     if (!extraRoll) {
                                         gameController.nextPlayer();
-
+                                        setPlayerTurnLabel(gameController);
+                                        clearRollLabel();
 
                                     }
                                     this.extraRoll = false;
@@ -144,11 +147,15 @@ public class GameBoardController implements Initializable {
     }
 
     private void setWarning(String message) {
-        warning.setText(message);
+        this.warning.setText(message);
+    }
+
+    private void clearRollLabel() {
+        this.rollResult.setText("");
     }
 
     private void clearWarning() {
-        warning.setText("");
+        this.warning.setText("");
     }
 
     private void setPlayerTurnLabel(GameController gameController) {
@@ -184,7 +191,7 @@ public class GameBoardController implements Initializable {
 
         backToMenu.setOnMouseClicked(mouseEvent -> {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("PlayerScreen.fxml"));
-            PlayerScreen controller = new PlayerScreen();
+            //PlayerScreen controller = new PlayerScreen();
             Parent gameParent = null;
             try {
                 gameParent = loader.load();
