@@ -23,25 +23,26 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ChoiceBox fx:id="choicebox1" prefHeight="31.0" prefWidth="169.0" GridPane.columnIndex="1" GridPane.rowIndex="1" value="None"/>
-            <ChoiceBox fx:id="choicebox2" layoutX="188.0" layoutY="23.0" prefHeight="31.0" prefWidth="169.0" GridPane.columnIndex="1" GridPane.rowIndex="2" value="None" />
-            <ChoiceBox fx:id="choicebox3" layoutX="10.0" layoutY="23.0" prefHeight="31.0" prefWidth="169.0" GridPane.columnIndex="1" GridPane.rowIndex="3" value="None"/>
-            <ChoiceBox fx:id="choicebox4" layoutX="10.0" layoutY="23.0" prefHeight="31.0" prefWidth="169.0" GridPane.columnIndex="1" GridPane.rowIndex="4" value="None"/>
+            <ChoiceBox fx:id="choicebox1" prefHeight="31.0" prefWidth="169.0" value="None" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ChoiceBox fx:id="choicebox2" layoutX="188.0" layoutY="23.0" prefHeight="31.0" prefWidth="169.0" value="None" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ChoiceBox fx:id="choicebox3" layoutX="10.0" layoutY="23.0" prefHeight="31.0" prefWidth="169.0" value="None" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ChoiceBox fx:id="choicebox4" layoutX="10.0" layoutY="23.0" prefHeight="31.0" prefWidth="169.0" value="None" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Player">
                <font>
                   <Font name="Calibri Bold" size="24.0" />
                </font>
             </Text>
-            <Text layoutX="10.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Colour" GridPane.columnIndex="1">
+            <Text layoutX="10.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Color" GridPane.columnIndex="1">
                <font>
                   <Font name="Calibri Bold" size="24.0" />
                </font>
             </Text>
             <Button fx:id="startButton" mnemonicParsing="false" onAction="#startGame" text="Start game" GridPane.rowIndex="5" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Player1" GridPane.rowIndex="1" />
-            <Text layoutX="10.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player2" GridPane.rowIndex="2" />
-            <Text layoutX="10.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player3" GridPane.rowIndex="3" />
-            <Text layoutX="10.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player4" GridPane.rowIndex="4" />
+            <TextField fx:id="textField1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="188.0" GridPane.rowIndex="1" />
+            <TextField fx:id="textField2" layoutX="10.0" layoutY="76.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="188.0" GridPane.rowIndex="2" />
+            <TextField fx:id="textField3" layoutX="10.0" layoutY="129.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="188.0" GridPane.rowIndex="3" />
+            <TextField fx:id="textField4" layoutX="10.0" layoutY="182.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="188.0" GridPane.rowIndex="4" />
+            <Text fx:id="Warning" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="You have to choose diferent colors" visible="false" wrappingWidth="209.6708984375" GridPane.columnIndex="1" GridPane.rowIndex="5" />
          </children>
       </GridPane>
    </children>
