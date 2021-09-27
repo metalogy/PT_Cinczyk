@@ -137,6 +137,7 @@ public class GameController {
     public boolean checkWin(Player player) {
         if(WinningConditionController.check(player))
         {
+            this.game.setWinner(player);
             this.game.setGameStatus(GameStatusEnum.FINISHED);
             return true;
         }

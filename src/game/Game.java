@@ -3,12 +3,16 @@ package game;
 import game.enums.GameStatusEnum;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Game {
     private String gameID;
     private ArrayList<Player> players = new ArrayList<Player>();
     private GameStatusEnum gameStatus;
-//    private Player currentPlayer;
+
+
+
+    //    private Player currentPlayer;
 //    private int currentPlayerID;
     private Player winner;
 
@@ -28,6 +32,7 @@ public class Game {
     public Game(String gameID, ArrayList<Player> players) {
         this.gameID = gameID;
         this.players = players;
+        Collections.shuffle(this.players);
 //        this.currentPlayerID=0;
 //        this.currentPlayer=getCurrentPlayer();
     }
@@ -36,6 +41,10 @@ public class Game {
         int roll = (int) ((Math.random() * (6)) + 1);
         System.out.println("Roll: " + roll);
         return roll;
+    }
+
+    public void setWinner(Player winner) {
+        this.winner = winner;
     }
 
 //    public Player getCurrentPlayer() {
