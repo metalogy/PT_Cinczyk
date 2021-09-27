@@ -40,6 +40,8 @@ public class GameBoardController implements Initializable {
     private Text rollResult;
     @FXML
     private Pane gamePane;
+    @FXML
+    private Button playButton;
 
     private Scene gameScene;
 
@@ -62,6 +64,7 @@ public class GameBoardController implements Initializable {
 
     @FXML
     void play() {
+        playButton.setVisible(false);
         updateBoard();
         gameController.setGameStatus(GameStatusEnum.IN_PROGRESS);
 
