@@ -1,6 +1,7 @@
 package GUI;
 
-import game.PawnsColorEnum;
+import game.Game;
+import game.enums.PawnsColorEnum;
 import game.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -39,11 +40,16 @@ public class PlayerScreen implements Initializable {
     @FXML
     private Button startButton;
 
+    private Game game;
     private String[] player={"player1","player2","player3","player4"};
     private String[] colour={"red","blue","yellow","green"};
 
-    public PlayerScreen() {
-    }
+//    public PlayerScreen(Game game) {
+//        this.game=game;
+//    }
+public PlayerScreen() {
+
+}
     @FXML
     private void startGame(ActionEvent event) throws IOException {
         Player player=new Player(PawnsColorEnum.Red,"test");
@@ -51,7 +57,7 @@ public class PlayerScreen implements Initializable {
         playerArrayList.add(player);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("GameBoard.fxml"));
-        GameBoardController controller=new GameBoardController("test",playerArrayList);
+        GameBoardController controller=new GameBoardController(this.game);
         loader.setController(controller);
         Parent gameParent = loader.load();
         Scene gameScene = new Scene(gameParent);

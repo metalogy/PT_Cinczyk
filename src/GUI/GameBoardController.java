@@ -8,9 +8,12 @@ import game.Pawn;
 import game.enums.GameStatusEnum;
 import game.Player;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Bounds;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -21,7 +24,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -79,8 +84,8 @@ public class GameBoardController implements Initializable {
 
                             if (gameController.getCurrentPlayer().getPawnsColor().equals(clickedPawnColour)) {
                                 move(gameController.getCurrentPlayer(), pawnID, rolled);
-                                if (true) {
-                                //if (gameController.checkWin(gameController.getCurrentPlayer())) {
+                                //if (true) {
+                                if (gameController.checkWin(gameController.getCurrentPlayer())) {
                                     System.out.println("Player " + gameController.getCurrentPlayer().getPawnsColor()
                                             + " WIN!");
                                     gameEnded(gameController.getCurrentPlayer());
@@ -117,15 +122,34 @@ public class GameBoardController implements Initializable {
             updateBoard();
         }
     }
-    private void gameEnded(Player player)
-    {
+
+    private void gameEnded(Player player) {
         this.gamePane.getChildren().clear();
-        Text endText= new Text(this.gamePane.getWidth()/2,this.gamePane.getHeight()/2,"Player "+player.getLogin()+" has won!");
+        Text endText = new Text((this.gamePane.getWidth() / 2),
+                this.gamePane.getHeight() / 2, "Player " + player.getLogin() + " has won!");
         this.gamePane.getChildren().add(endText);
         Button backToMenu = new Button("Back to menu");
-        backToMenu.setOnMouseClicked(mouseEvent ->
-                );
+        backToMenu.setLayoutX((this.gamePane.getWidth() / 2) - backToMenu.getWidth());
+        backToMenu.setLayoutY((this.gamePane.getHeight() / 2) - 50);
+        this.gamePane.getChildren().add(backToMenu);
+
+        backToMenu.setOnMouseClicked(mouseEvent -> {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("PlayerScreen.fxml"));
+            PlayerScreen controller = new PlayerScreen();
+            Parent gameParent = null;
+            try {
+                gameParent = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Scene gameScene = new Scene(gameParent);
+            Stage appStage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+            appStage.setScene(gameScene);
+            appStage.show();
+
+        });
     }
+
     private void updateBoard() {
         clearCircles();
         for (Player player : gameController.getPlayers()
