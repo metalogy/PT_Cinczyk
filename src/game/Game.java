@@ -11,7 +11,6 @@ public class Game {
     private GameStatusEnum gameStatus;
 
 
-
     //    private Player currentPlayer;
 //    private int currentPlayerID;
     private Player winner;
@@ -33,8 +32,6 @@ public class Game {
         this.gameID = gameID;
         this.players = players;
         Collections.shuffle(this.players);
-//        this.currentPlayerID=0;
-//        this.currentPlayer=getCurrentPlayer();
     }
 
     public static Integer rollDice() {
@@ -47,18 +44,4 @@ public class Game {
         this.winner = winner;
     }
 
-//    public Player getCurrentPlayer() {
-//        return this.players.get(this.currentPlayerID);
-//    }
-
-//    public void nextPlayer() {
-//        this.currentPlayerID++;
-//        if (this.currentPlayerID > this.players.size()-1) {
-//            this.currentPlayerID = 0;
-//        }
-//    }
-//    public void bicie(Pawn pawn, String field)
-//    {
-//
-//    }
 }

@@ -16,6 +16,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -42,12 +43,17 @@ public class GameBoardController implements Initializable {
     private Pane gamePane;
     @FXML
     private Button playButton;
+    @FXML
+    private Text playerTurn;
+    @FXML
+    private Text warning;
+    @FXML
+    private Circle turnCircle;
 
     private Scene gameScene;
 
     private boolean rollValidation = true;
     private boolean extraRoll = false;
-
     //private String gameID;
     private GameController gameController;
     private ArrayList<Circle> circles = new ArrayList<Circle>(); //przechowuje okręgi - wizualizację pionków
@@ -69,15 +75,16 @@ public class GameBoardController implements Initializable {
         gameController.setGameStatus(GameStatusEnum.IN_PROGRESS);
 
         rollDiceButton.setOnAction(actionEvent -> {
+            setPlayerTurnLabel(gameController);
             if (this.rollValidation) {
                 this.rollValidation = false;
                 int rolled = rollDice();
                 if (rolled == 6) {
                     extraRoll = true;
                 }
-                //rollDiceButton.setDisable(ture);
-                //TODO zablokowanie wielokrotnego wciśnięcia rolowania
+
                 gamePane.setOnMouseClicked(event -> {
+                    clearWarning();
                     if (!this.rollValidation) {
                         if (event.getTarget() instanceof Circle) {
                             String clickedPawnID = (((Circle) event.getTarget()).getId());
@@ -94,20 +101,36 @@ public class GameBoardController implements Initializable {
                                     gameEnded(gameController.getCurrentPlayer());
                                 }
                                 if (!extraRoll) {
-                                    gameController.nextPlayer(); //#TODO wciskanie bez rollowania
+                                    gameController.nextPlayer();
 
                                 }
                                 this.extraRoll = false;
                                 this.rollValidation = true;
 
                             } else {
-                                System.out.println("Zły pionek!"); //#TODO jakiś komunikat w GUI
+                                //System.out.println("Zły pionek!");
+                                setWarning("Wrong pawn!");
+
                             }
                         }
                     }
                 });
             }
         });
+    }
+
+    private void setWarning(String message) {
+        warning.setText(message);
+    }
+
+    private void clearWarning() {
+        warning.setText("");
+    }
+
+    private void setPlayerTurnLabel(GameController gameController) {
+        String label = "Player " + gameController.getCurrentPlayer().getLogin() + " turn!";
+        playerTurn.setText(label);
+        turnCircle.setFill(Color.valueOf(gameController.getCurrentPlayer().getPawnsColor().toLowerCase(Locale.ROOT)));
     }
 
     @FXML

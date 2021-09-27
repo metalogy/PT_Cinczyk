@@ -6,7 +6,6 @@ import game.enums.PawnStatusEnum;
 
 import java.util.ArrayList;
 
-import static game.LockController.checkIfLocked;
 import static java.lang.Integer.parseInt;
 
 public class GameController {
@@ -45,7 +44,6 @@ public class GameController {
         for (Pawn pawn : player.getPawns()
         ) {
             if (pawn.getId() == id) {
-                //#TODO rozbicie na kolejne funkcje
                 if (pawn.getStatus() == PawnStatusEnum.ON_SPAWN_POINT) {
                     if (rolled == 6) {
                         String position = "";
@@ -55,7 +53,6 @@ public class GameController {
                                 //zbicie pionka przeciwnika następuje w funkcji checkField
                                 pawn.putPawnOnBoard(new String(String.valueOf(player.getStartingBoardPosition())));
                                 position = "#" + (new String(String.valueOf(player.getStartingBoardPosition())));
-                                System.out.println("POSITION " + position);
                                 pawn.setPosition(position);
                                 return true;
                             case FIELD_TAKEN:
@@ -107,7 +104,6 @@ public class GameController {
                                 if (checkIfLocked(player, pawn)) {
                                     pawn.setStatus(PawnStatusEnum.LOCKED_IN_HOME); //
                                 }
-                                // LockController.updateLock(player);
                                 return true;
                             case FIELD_TAKEN:
                                 //pole zajęte przez nasz pionek
@@ -121,22 +117,17 @@ public class GameController {
                         pawn.setPedometer(oldPedometer);
                         return false;
                     }
-                }
-                //#TODO blokowanie pionków na końcowych pozycjach w domku
-                //#TODO warunki zwycięstwa
-                else if (pawn.getStatus() == PawnStatusEnum.LOCKED_IN_HOME) {
+                } else if (pawn.getStatus() == PawnStatusEnum.LOCKED_IN_HOME) {
                     System.out.println("Final pawn position, cant move");
                     return false;
                 }
-                //LockController.updateLock(player);
             }
         }
         return false;
     }
 
     public boolean checkWin(Player player) {
-        if(WinningConditionController.check(player))
-        {
+        if (WinningConditionController.check(player)) {
             this.game.setWinner(player);
             this.game.setGameStatus(GameStatusEnum.FINISHED);
             return true;
@@ -144,14 +135,6 @@ public class GameController {
         return false;
     }
 
-    //    public void updateLock(Player player) {
-//        for (Pawn pawn : player.getPawns()) {
-//            if (checkIfLocked(player, pawn)) {
-//                pawn.setStatus(PawnStatusEnum.LOCKED_IN_HOME);
-//            }
-//        }
-//    }
-//
     public boolean checkIfLocked(Player player, Pawn pawn) {
         int endPosition = parseInt(pawn.getPosition().substring(pawn.getPosition().length() - 1)); //pola końcowego
         if (endPosition != 4) {
