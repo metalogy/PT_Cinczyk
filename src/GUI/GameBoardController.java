@@ -99,7 +99,6 @@ public class GameBoardController implements Initializable {
                 int rolled = rollDice();
                 if (rolled == 6) {
                     extraRoll = true;
-                    this.rollValidation=true; //możliwość ponownego rzutu, gdy mamy wyrzucone 6, potrzebne gdy wyrzucimy, a nie możemy się ruszyć
                 }
                 clearWarning();
 
