@@ -82,6 +82,7 @@ public class GameBoardController implements Initializable {
         this.gameController.nextPlayer();
         setPlayerTurnLabel(gameController);
         clearRollLabel();
+        extraRoll=false;
     }
 
     @FXML
